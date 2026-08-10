@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Royal Court Academy | Kids Tennis Registration</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        court: {
+                            50: '#f2f7f4',
+                            100: '#e1ede5',
+                            200: '#c5dbc3',
+                            500: '#3e825a',
+                            700: '#1c4a31',
+                            800: '#143825',
+                            900: '#0e291b',
+                        },
+                        gold: {
+                            400: '#e5c158',
+                            500: '#d4af37',
+                            600: '#b89228',
+                        },
+                        cream: '#FAF8F5',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FAF8F5;
+            font-family: 'Inter', sans-serif;
+            color: #1c2721;
+        }
+        .serif-title {
+            font-family: 'Playfair Display', serif;
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #D4AF37 0%, #F3E5AB 50%, #AA7C11 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between antialiased selection:bg-court-500 selection:text-white">
+
+    <header class="sticky top-0 z-40 bg-court-900/95 backdrop-blur-md border-b border-gold-500/20 text-white transition-all shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 p-0.5 shadow-lg group-hover:scale-105 transition-transform duration-300">
+                    <div class="w-full h-full bg-court-900 rounded-full flex items-center justify-center border border-gold-400/40">
+                        <!-- Crown SVG Crest -->
+                        <svg class="w-7 h-7 text-gold-400" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm14 3c0 .6-.4 1-1 1H6c-.6 0-1-.4-1-1v-1h14v1z"/>
+                        </svg>
+                    </div>
+                </div>
+                <div>
+                    <span class="block text-xs uppercase tracking-widest text-gold-400 font-semibold">The Royal Court</span>
+                    <span class="block text-lg font-bold tracking-tight text-white serif-title">ACADEMY</span>
+                </div>
+            </a>
+
+            <!-- Desktop Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+                <a href="#locations" class="hover:text-gold-400 transition-colors">Locations & Rates</a>
+                <a href="#programs" class="hover:text-gold-400 transition-colors">Age Programs</a>
+                <a href="#faq" class="hover:text-gold-400 transition-colors">Parent FAQ</a>
+            </nav>
+
+            <!-- CTA Button -->
+            <div class="flex items-center gap-3">
+                <a href="#booking-section" class="inline-flex items-center gap-2 bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-400 hover:to-gold-500 text-court-900 font-bold px-5 py-2.5 rounded-full text-sm shadow-md hover:shadow-gold-500/20 transition-all duration-200 transform hover:-translate-y-0.5">
+                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                    <span>Book Lesson</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <section class="relative bg-court-900 text-white overflow-hidden py-16 lg:py-24 border-b border-gold-500/20">
+            <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#d4af37_1px,transparent_1px)] [background-size:16px_16px]"></div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid lg:grid-cols-12 gap-12 items-center">
+                    <!-- Left Hero Content -->
+                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-court-800 border border-gold-500/30 text-gold-400 text-xs font-semibold tracking-wide uppercase shadow-sm">
+                            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-gold-400"></i>
+                            <span>Premium Junior Tennis Academy KL</span>
+                        </div>
+                        
+                        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight serif-title leading-tight">
+                            Inspiring the Next Generation of <span class="gold-gradient-text italic">Tennis Champions</span>
+                        </h1>
+                        
+                        <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
+                            Structured, fun, and high-energy tennis coaching for kids aged 4 to 12. Designed for easy booking with flexible trial drop-ins or monthly academy packages.
+                        </p>
+
+                        <!-- Key Badges -->
+                        <div class="pt-2 flex flex-wrap justify-center lg:justify-start gap-4 text-xs font-medium text-slate-200">
+                            <div class="flex items-center gap-2 bg-court-800/80 px-3.5 py-2 rounded-xl border border-court-700">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-gold-400"></i>
+                                <span>Ages 4 - 12 Years Old</span>
+                            </div>
+                            <div class="flex items-center gap-2 bg-court-800/80 px-3.5 py-2 rounded-xl border border-court-700">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-gold-400"></i>
+                                <span>Certified Junior Coaches</span>
+                            </div>
+                            <div class="flex items-center gap-2 bg-court-800/80 px-3.5 py-2 rounded-xl border border-court-700">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-gold-400"></i>
+                                <span>Jalan Kuching & The Hood</span>
+                            </div>
+                        </div>
+
+                        <!-- CTA buttons -->
+                        <div class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                            <a href="#booking-section" class="w-full sm:w-auto px-8 py-4 bg-gold-500 hover:bg-gold-400 text-court-900 font-bold rounded-2xl shadow-lg shadow-gold-500/20 text-center transition-all">
+                                Start Registration Now
+                            </a>
+                            <a href="#locations" class="w-full sm:w-auto px-6 py-4 bg-court-800 hover:bg-court-700 text-white font-medium rounded-2xl border border-slate-700 text-center transition-all">
+                                View Locations & Rates
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right Hero Card -->
+                    <div class="lg:col-span-5">
+                        <div class="relative mx-auto max-w-md bg-gradient-to-b from-court-800 to-court-900 p-1 rounded-3xl shadow-2xl border border-gold-500/30">
+                            <div class="bg-court-900 p-6 sm:p-8 rounded-[22px] space-y-6">
+                                <div class="flex items-center justify-between border-b border-court-800 pb-4">
+                                    <span class="text-xs font-semibold text-gold-400 tracking-wider uppercase">At A Glance</span>
+                                    <span class="px-2.5 py-1 bg-gold-500/10 text-gold-400 text-xs rounded-full border border-gold-500/30 font-medium">Limited Slots Available</span>
+                                </div>
+                                
+                                <div class="space-y-4">
+                                    <div class="flex items-start gap-3">
+                                        <div class="p-2.5 bg-court-800 text-gold-400 rounded-xl border border-court-700">
+                                            <i data-lucide="map-pin" class="w-5 h-5"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-sm font-semibold text-white">2 Convenient KL Locations</h4>
+                                            <p class="text-xs text-slate-400">Jalan Kuching, KL & The Hood, KL</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex items-start gap-3">
+                                        <div class="p-2.5 bg-court-800 text-gold-400 rounded-xl border border-court-700">
+                                            <i data-lucide="zap" class="w-5 h-5"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-sm font-semibold text-white">Court Kickstart (Trial Class)</h4>
+                                            <p class="text-xs text-slate-400">From RM45/hr — Try without long commitment</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex items-start gap-3">
+                                        <div class="p-2.5 bg-court-800 text-gold-400 rounded-xl border border-court-700">
+                                            <i data-lucide="award" class="w-5 h-5"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-sm font-semibold text-white">Core Court Membership</h4>
+                                            <p class="text-xs text-slate-400">From RM140/mo — 4 sessions/month (Save RM40!)</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="pt-2">
+                                    <a href="#booking-section" class="w-full py-3 bg-court-700 hover:bg-court-600 text-white font-medium text-sm rounded-xl flex items-center justify-center gap-2 transition-colors">
+                                        <span>Select Your Preferred Location</span>
+                                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="locations" class="py-16 bg-cream border-b border-slate-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h2 class="text-xs font-bold uppercase tracking-widest text-court-700 mb-2">Transparent Pricing</h2>
+                    <p class="text-3xl sm:text-4xl font-bold text-slate-900 serif-title">Choose Your Location & Plan</p>
+                    <p class="mt-3 text-slate-600 text-sm sm:text-base">Designed with full flexibility for busy millennial parents. Pick a trial pass or enroll in our value monthly academy package.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                    <!-- Location 1 Card: Jalan Kuching -->
+                    <div class="bg-white rounded-3xl shadow-lg border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="bg-court-900 p-6 text-white relative">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <span class="inline-block px-2.5 py-1 bg-gold-500/20 text-gold-400 border border-gold-500/30 text-xs font-bold uppercase tracking-wider rounded-md mb-2">Location 1</span>
+                                        <h3 class="text-2xl font-bold serif-title text-white">Jalan Kuching, KL</h3>
+                                    </div>
+                                    <div class="p-2 bg-court-800 rounded-xl text-gold-400">
+                                        <i data-lucide="map-pin" class="w-6 h-6"></i>
+                                    </div>
+                                </div>
+                                <p class="text-xs text-slate-300 mt-2 flex items-center gap-1">
+                                    <i data-lucide="clock" class="w-3.5 h-3.5 text-gold-400"></i>
+                                    <span>Weekend & Evening Slots Available</span>
+                                </p>
+                            </div>
+
+                            <div class="p-6 space-y-6">
+                                <!-- Option A -->
+                                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 hover:border-court-500 transition-colors">
+                                    <div class="flex justify-between items-center mb-1">
+                                        <h4 class="font-bold text-slate-900 text-base">Court Kickstart <span class="text-xs font-normal text-slate-500">(Ad-Hoc / Single Trial)</span></h4>
+                                        <span class="text-2xl font-extrabold text-court-800">RM 45</span>
+                                    </div>
+                                    <p class="text-xs text-slate-600 mb-2">1 Hour Session. Perfect for first-timers testing out the class.</p>
+                                    <ul class="text-xs text-slate-500 space-y-1">
+                                        <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i> Zero monthly commitment</li>
+                                        <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i> Equipment included upon request</li>
+                                    </ul>
+                                </div>
+
+                                <!-- Option B -->
+                                <div class="p-4 rounded-2xl bg-court-50 border border-court-200 relative overflow-hidden">
+                                    <div class="absolute top-0 right-0 bg-gold-500 text-court-900 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-bl-lg">
+                                        Best Value (Save RM40)
+                                    </div>
+                                    <div class="flex justify-between items-center mb-1">
+                                        <h4 class="font-bold text-court-900 text-base">Core Court Membership</h4>
+                                        <span class="text-2xl font-extrabold text-court-800">RM 140 <span class="text-xs font-normal text-slate-600">/mo</span></span>
+                                    </div>
+                                    <p class="text-xs text-court-800 font-medium mb-2">4 Classes / Month (1 hour per class)</p>
+                                    <ul class="text-xs text-court-700 space-y-1">
+                                        <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-court-700"></i> Progressive structured skill development</li>
+                                        <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-court-700"></i> Guaranteed weekly spot reservation</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-6 pt-0">
+                            <button onclick="selectLocationAndScroll('Jalan Kuching, KL')" class="w-full py-3.5 bg-court-800 hover:bg-court-900 text-white font-bold rounded-xl text-sm transition-colors flex items-center justify-center gap-2">
+                                <span>Book at Jalan Kuching</span>
+                                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Location 2 Card: The Hood -->
+                    <div class="bg-white rounded-3xl shadow-lg border border-slate-200 overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                        <div>
+                            <div class="bg-court-900 p-6 text-white relative">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <span class="inline-block px-2.5 py-1 bg-gold-500/20 text-gold-400 border border-gold-500/30 text-xs font-bold uppercase tracking-wider rounded-md mb-2">Location 2</span>
+                                        <h3 class="text-2xl font-bold serif-title text-white">The Hood, KL</h3>
+                                    </div>
+                                    <div class="p-2 bg-court-800 rounded-xl text-gold-400">
+                                        <i data-lucide="map-pin" class="w-6 h-6"></i>
+                                    </div>
+                                </div>
+                                <p class="text-xs text-slate-300 mt-2 flex items-center gap-1">
+                                    <i data-lucide="clock" class="w-3.5 h-3.5 text-gold-400"></i>
+                                    <span>Premium Covered Court Facilities</span>
+                                </p>
+                            </div>
+
+                            <div class="p-6 space-y-6">
+                                <!-- Option A -->
+                                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 hover:border-court-500 transition-colors">
+                                    <div class="flex justify-between items-center mb-1">
+                                        <h4 class="font-bold text-slate-900 text-base">Court Kickstart <span class="text-xs font-normal text-slate-500">(Ad-Hoc / Single Trial)</span></h4>
+                                        <span class="text-2xl font-extrabold text-court-800">RM 50</span>
+                                    </div>
+                                    <p class="text-xs text-slate-600 mb-2">1 Hour Session. Great choice for a quick pay-as-you-play session.</p>
+                                    <ul class="text-xs text-slate-500 space-y-1">
+                                        <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i> Zero monthly commitment</li>
+                                        <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i> Equipment included upon request</li>
+                                    </ul>
+                                </div>
+
+                                <!-- Option B -->
+                                <div class="p-4 rounded-2xl bg-court-50 border border-court-200 relative overflow-hidden">
+                                    <div class="absolute top-0 right-0 bg-gold-500 text-court-900 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-bl-lg">
+                                        Best Value (Save RM40)
+                                    </div>
+                                    <div class="flex justify-between items-center mb-1">
+                                        <h4 class="font-bold text-court-900 text-base">Core Court Membership</h4>
+                                        <span class="text-2xl font-extrabold text-court-800">RM 160 <span class="text-xs font-normal text-slate-600">/mo</span></span>
+                                    </div>
+                                    <p class="text-xs text-court-800 font-medium mb-2">4 Classes / Month (1 hour per class)</p>
+                                    <ul class="text-xs text-court-700 space-y-1">
+                                        <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-court-700"></i> Progressive structured skill development</li>
+                                        <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-court-700"></i> Guaranteed weekly spot reservation</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-6 pt-0">
+                            <button onclick="selectLocationAndScroll('The Hood, KL')" class="w-full py-3.5 bg-court-800 hover:bg-court-900 text-white font-bold rounded-xl text-sm transition-colors flex items-center justify-center gap-2">
+                                <span>Book at The Hood</span>
+                                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="programs" class="py-16 bg-white border-b border-slate-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-12">
+                    <h2 class="text-xs font-bold uppercase tracking-widest text-court-700 mb-2">Age-Tailored Curriculum</h2>
+                    <p class="text-3xl font-bold text-slate-900 serif-title">Designed for Kids 4 to 12 Years Old</p>
+                    <p class="mt-2 text-slate-600 text-sm">We group young athletes by age and skill level to ensure maximum fun, confidence, and steady technique growth.</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6">
+                    <!-- Category 1 -->
+                    <div class="p-6 rounded-2xl bg-cream border border-slate-200 hover:border-gold-500 transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-600 font-bold text-lg mb-4">
+                            4-6
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-1">Little Racquets</h3>
+                        <p class="text-xs font-semibold text-court-700 mb-3 uppercase tracking-wider">Ages 4 – 6 Years</p>
+                        <p class="text-slate-600 text-xs leading-relaxed">
+                            Focuses on motor skills, hand-eye coordination, balance, and learning basic racket contact through playful, engaging mini-court drills.
+                        </p>
+                    </div>
+
+                    <!-- Category 2 -->
+                    <div class="p-6 rounded-2xl bg-cream border border-slate-200 hover:border-gold-500 transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-600 font-bold text-lg mb-4">
+                            7-9
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-1">Junior Smashers</h3>
+                        <p class="text-xs font-semibold text-court-700 mb-3 uppercase tracking-wider">Ages 7 – 9 Years</p>
+                        <p class="text-slate-600 text-xs leading-relaxed">
+                            Introduces fundamental strokes (forehand, backhand, volley), simple rally control, footwork agility, and introductory point play rules.
+                        </p>
+                    </div>
+
+                    <!-- Category 3 -->
+                    <div class="p-6 rounded-2xl bg-cream border border-slate-200 hover:border-gold-500 transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-gold-500/10 border border-gold-500/30 flex items-center justify-center text-gold-600 font-bold text-lg mb-4">
+                            10-12
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-1">Court Captains</h3>
+                        <p class="text-xs font-semibold text-court-700 mb-3 uppercase tracking-wider">Ages 10 – 12 Years</p>
+                        <p class="text-slate-600 text-xs leading-relaxed">
+                            Full-court rally consistency, serve mechanics, tactical match awareness, physical stamina, and competitive sportsmanship skills.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="booking-section" class="py-16 bg-slate-900 text-white relative">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center mb-10">
+                    <span class="px-3 py-1 bg-gold-500/20 text-gold-400 border border-gold-500/30 text-xs font-bold uppercase tracking-wider rounded-full">Fast & Easy Registration</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white serif-title mt-3">Book Your Child’s Tennis Class</h2>
+                    <p class="text-slate-400 text-sm mt-2">Select your options below to complete your registration in under 2 minutes.</p>
+                </div>
+
+                <!-- Main Booking Form Container -->
+                <div class="bg-court-900 border border-gold-500/30 rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden">
+                    
+                    <!-- Progress Bar Header -->
+                    <div class="mb-8 border-b border-court-800 pb-6">
+                        <div class="flex justify-between text-xs font-semibold text-slate-400 mb-2">
+                            <span id="step-label">Step 1 of 3: Location & Package</span>
+                            <span id="step-percent" class="text-gold-400">33% Completed</span>
+                        </div>
+                        <div class="w-full h-2 bg-court-800 rounded-full overflow-hidden">
+                            <div id="progress-bar" class="h-full bg-gradient-to-r from-gold-500 to-gold-400 transition-all duration-300" style="width: 33%;"></div>
+                        </div>
+                    </div>
+
+                    <form id="bookingForm" onsubmit="handleFormSubmit(event)" class="space-y-8">
+                        
+                        <!-- STEP 1: Location & Pass Selection -->
+                        <div id="step-1" class="space-y-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-200 mb-3 flex items-center gap-2">
+                                    <i data-lucide="map-pin" class="w-4 h-4 text-gold-400"></i>
+                                    <span>1. Select Preferred Location</span>
+                                </label>
+                                <div class="grid sm:grid-cols-2 gap-4">
+                                    <label class="relative flex flex-col p-4 bg-court-800 rounded-2xl border-2 border-court-700 cursor-pointer hover:border-gold-500/50 transition-all">
+                                        <input type="radio" name="location" value="Jalan Kuching, KL" checked onchange="updateBookingData()" class="sr-only">
+                                        <div class="flex justify-between items-center">
+                                            <span class="font-bold text-white text-base">Jalan Kuching, KL</span>
+                                        </div>
+                                        <span class="text-xs text-slate-400 mt-1">Outdoor Courts & Facilities</span>
+                                    </label>
+
+                                    <label class="relative flex flex-col p-4 bg-court-800 rounded-2xl border-2 border-court-700 cursor-pointer hover:border-gold-500/50 transition-all">
+                                        <input type="radio" name="location" value="The Hood, KL" onchange="updateBookingData()" class="sr-only">
+                                        <div class="flex justify-between items-center">
+                                            <span class="font-bold text-white text-base">The Hood, KL</span>
+                                        </div>
+                                        <span class="text-xs text-slate-400 mt-1">Covered & Weather-Safe Venue</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-200 mb-3 flex items-center gap-2">
+                                    <i data-lucide="tag" class="w-4 h-4 text-gold-400"></i>
+                                    <span>2. Select Class Format</span>
+                                </label>
+                                <div class="grid sm:grid-cols-2 gap-4">
+                                    <label class="relative flex flex-col p-4 bg-court-800 rounded-2xl border-2 border-court-700 cursor-pointer hover:border-gold-500/50 transition-all">
+                                        <input type="radio" name="plan" value="Court Kickstart" checked onchange="updateBookingData()" class="sr-only">
+                                        <div class="flex justify-between items-center">
+                                            <span class="font-bold text-white text-base">Court Kickstart</span>
+                                            <span id="kickstart-price" class="text-gold-400 font-extrabold text-lg">RM 45</span>
+                                        </div>
+                                        <span class="text-xs text-slate-300 mt-1">Ad-Hoc Single Session (1 Hour)</span>
+                                    </label>
+
+                                    <label class="relative flex flex-col p-4 bg-court-800 rounded-2xl border-2 border-court-700 cursor-pointer hover:border-gold-500/50 transition-all">
+                                        <input type="radio" name="plan" value="Core Court Membership" onchange="updateBookingData()" class="sr-only">
+                                        <div class="flex justify-between items-center">
+                                            <span class="font-bold text-white text-base">Core Court Membership</span>
+                                            <span id="membership-price" class="text-gold-400 font-extrabold text-lg">RM 140</span>
+                                        </div>
+                                        <span class="text-xs text-slate-300 mt-1">Monthly Pack (4 Classes / Month)</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="pt-4">
+                                <button type="button" onclick="goToStep(2)" class="w-full py-4 bg-gold-500 hover:bg-gold-400 text-court-900 font-bold rounded-xl transition-all flex items-center justify-center gap-2">
+                                    <span>Continue to Schedule & Child Info</span>
+                                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- STEP 2: Age Group & Schedule -->
+                        <div id="step-2" class="space-y-6 hidden">
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-200 mb-3 flex items-center gap-2">
+                                    <i data-lucide="user-check" class="w-4 h-4 text-gold-400"></i>
+                                    <span>3. Select Child's Age Group</span>
+                                </label>
+                                <div class="grid grid-cols-3 gap-3">
+                                    <label class="p-3 bg-court-800 border-2 border-court-700 rounded-xl text-center cursor-pointer hover:border-gold-500">
+                                        <input type="radio" name="ageGroup" value="Little Racquets (Ages 4-6)" checked onchange="updateBookingData()" class="sr-only">
+                                        <span class="block text-xs font-bold text-white">Little Racquets</span>
+                                        <span class="block text-[10px] text-slate-400 mt-0.5">Ages 4 – 6</span>
+                                    </label>
+
+                                    <label class="p-3 bg-court-800 border-2 border-court-700 rounded-xl text-center cursor-pointer hover:border-gold-500">
+                                        <input type="radio" name="ageGroup" value="Junior Smashers (Ages 7-9)" onchange="updateBookingData()" class="sr-only">
+                                        <span class="block text-xs font-bold text-white">Junior Smashers</span>
+                                        <span class="block text-[10px] text-slate-400 mt-0.5">Ages 7 – 9</span>
+                                    </label>
+
+                                    <label class="p-3 bg-court-800 border-2 border-court-700 rounded-xl text-center cursor-pointer hover:border-gold-500">
+                                        <input type="radio" name="ageGroup" value="Court Captains (Ages 10-12)" onchange="updateBookingData()" class="sr-only">
+                                        <span class="block text-xs font-bold text-white">Court Captains</span>
+                                        <span class="block text-[10px] text-slate-400 mt-0.5">Ages 10 – 12</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-200 mb-3 flex items-center gap-2">
+                                    <i data-lucide="calendar-days" class="w-4 h-4 text-gold-400"></i>
+                                    <span>4. Preferred Time Slot</span>
+                                </label>
+                                <div class="grid sm:grid-cols-2 gap-3 text-xs">
+                                    <label class="p-3 bg-court-800 border border-court-700 rounded-xl flex items-center justify-between cursor-pointer hover:border-gold-400">
+                                        <input type="radio" name="timeslot" value="Saturday 9:00 AM - 10:00 AM" checked onchange="updateBookingData()" class="sr-only">
+                                        <span class="text-slate-200 font-medium">Saturday 9:00 AM - 10:00 AM</span>
+                                        <span class="text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded">3 spots left</span>
+                                    </label>
+
+                                    <label class="p-3 bg-court-800 border border-court-700 rounded-xl flex items-center justify-between cursor-pointer hover:border-gold-400">
+                                        <input type="radio" name="timeslot" value="Saturday 4:00 PM - 5:00 PM" onchange="updateBookingData()" class="sr-only">
+                                        <span class="text-slate-200 font-medium">Saturday 4:00 PM - 5:00 PM</span>
+                                        <span class="text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded">5 spots left</span>
+                                    </label>
+
+                                    <label class="p-3 bg-court-800 border border-court-700 rounded-xl flex items-center justify-between cursor-pointer hover:border-gold-400">
+                                        <input type="radio" name="timeslot" value="Sunday 9:00 AM - 10:00 AM" onchange="updateBookingData()" class="sr-only">
+                                        <span class="text-slate-200 font-medium">Sunday 9:00 AM - 10:00 AM</span>
+                                        <span class="text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded">2 spots left</span>
+                                    </label>
+
+                                    <label class="p-3 bg-court-800 border border-court-700 rounded-xl flex items-center justify-between cursor-pointer hover:border-gold-400">
+                                        <input type="radio" name="timeslot" value="Sunday 5:00 PM - 6:00 PM" onchange="updateBookingData()" class="sr-only">
+                                        <span class="text-slate-200 font-medium">Sunday 5:00 PM - 6:00 PM</span>
+                                        <span class="text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded">4 spots left</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="flex gap-3 pt-2">
+                                <button type="button" onclick="goToStep(1)" class="w-1/3 py-3.5 bg-court-800 hover:bg-court-700 text-slate-300 font-semibold rounded-xl text-xs transition-colors">
+                                    Back
+                                </button>
+                                <button type="button" onclick="goToStep(3)" class="w-2/3 py-3.5 bg-gold-500 hover:bg-gold-400 text-court-900 font-bold rounded-xl text-xs transition-colors flex items-center justify-center gap-2">
+                                    <span>Fill Parent Details</span>
+                                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- STEP 3: Child & Parent Details -->
+                        <div id="step-3" class="space-y-6 hidden">
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-300 mb-1">Parent's Full Name *</label>
+                                    <input type="text" id="parentName" required placeholder="e.g. Sarah Tan" class="w-full bg-court-800 border border-court-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-gold-400">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-300 mb-1">WhatsApp Phone Number *</label>
+                                    <input type="tel" id="parentPhone" required placeholder="e.g. 012-345 6789" class="w-full bg-court-800 border border-court-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-gold-400">
+                                </div>
+                            </div>
+
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-300 mb-1">Child's Name *</label>
+                                    <input type="text" id="childName" required placeholder="e.g. Adam" class="w-full bg-court-800 border border-court-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-gold-400">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-300 mb-1">Child's Exact Age *</label>
+                                    <input type="number" id="childAge" min="4" max="12" required placeholder="e.g. 7" class="w-full bg-court-800 border border-court-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-gold-400">
+                                </div>
+                            </div>
+
+                            <!-- Live Summary -->
+                            <div class="p-4 rounded-2xl bg-court-800 border border-gold-500/30 text-xs space-y-2">
+                                <div class="flex justify-between text-slate-300">
+                                    <span>Selected Location:</span>
+                                    <span id="summary-location" class="font-bold text-white">Jalan Kuching, KL</span>
+                                </div>
+                                <div class="flex justify-between text-slate-300">
+                                    <span>Class Format:</span>
+                                    <span id="summary-plan" class="font-bold text-white">Court Kickstart</span>
+                                </div>
+                                <div class="flex justify-between text-slate-300">
+                                    <span>Time Slot:</span>
+                                    <span id="summary-slot" class="font-bold text-white">Saturday 9:00 AM</span>
+                                </div>
+                                <div class="border-t border-court-700 pt-2 flex justify-between items-center text-sm">
+                                    <span class="font-bold text-white">Total Amount Due:</span>
+                                    <span id="summary-total" class="font-extrabold text-gold-400 text-lg">RM 45</span>
+                                </div>
+                            </div>
+
+                            <div class="flex gap-3">
+                                <button type="button" onclick="goToStep(2)" class="w-1/3 py-3.5 bg-court-800 hover:bg-court-700 text-slate-300 font-semibold rounded-xl text-xs transition-colors">
+                                    Back
+                                </button>
+                                <button type="submit" class="w-2/3 py-3.5 bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-400 hover:to-gold-500 text-court-900 font-bold rounded-xl text-xs shadow-lg transition-all flex items-center justify-center gap-2">
+                                    <i data-lucide="check-circle" class="w-4 h-4"></i>
+                                    <span>Confirm Registration</span>
+                                </button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="py-16 bg-cream border-t border-slate-200">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-10">
+                    <h2 class="text-xs font-bold uppercase tracking-widest text-court-700 mb-2">Helpful Information</h2>
+                    <p class="text-3xl font-bold text-slate-900 serif-title">Frequently Asked Questions</p>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
+                        <button onclick="toggleFaq('faq1')" class="w-full flex justify-between items-center text-left font-bold text-slate-900 text-sm">
+                            <span>Does my child need to bring their own tennis racket?</span>
+                            <i id="icon-faq1" data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transition-transform"></i>
+                        </button>
+                        <p id="faq1" class="hidden text-xs text-slate-600 mt-3 leading-relaxed">
+                            Not at all! We provide appropriately sized junior rackets and modified low-compression tennis balls for all trial and weekly students free of charge.
+                        </p>
+                    </div>
+
+                    <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
+                        <button onclick="toggleFaq('faq2')" class="w-full flex justify-between items-center text-left font-bold text-slate-900 text-sm">
+                            <span>What happens if a class is canceled due to heavy rain?</span>
+                            <i id="icon-faq2" data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transition-transform"></i>
+                        </button>
+                        <p id="faq2" class="hidden text-xs text-slate-600 mt-3 leading-relaxed">
+                            At Jalan Kuching (outdoor court), rained-out classes are credited back or rescheduled for a replacement make-up session. Classes at The Hood are covered and run rain or shine!
+                        </p>
+                    </div>
+
+                    <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
+                        <button onclick="toggleFaq('faq3')" class="w-full flex justify-between items-center text-left font-bold text-slate-900 text-sm">
+                            <span>Can we upgrade from a Kickstart Trial to the Core Membership later?</span>
+                            <i id="icon-faq3" data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transition-transform"></i>
+                        </button>
+                        <p id="faq3" class="hidden text-xs text-slate-600 mt-3 leading-relaxed">
+                            Yes! After your child completes their first trial session, you can upgrade to the 4-class Core Membership and apply your trial fee directly toward the monthly package.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-court-900 text-slate-400 text-xs py-10 border-t border-gold-500/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-2">
+                <span class="font-bold text-white serif-title">THE ROYAL COURT ACADEMY</span>
+                <span>— Kids Tennis Program KL</span>
+            </div>
+            <div>
+                <span>© 2026 RCA Tennis. All Rights Reserved.</span>
+            </div>
+        </div>
+    </footer>
+
+    <div id="confirmationModal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+        <div class="bg-court-900 border border-gold-500/40 w-full max-w-md rounded-3xl p-6 sm:p-8 text-white shadow-2xl relative text-center">
+            <div class="w-16 h-16 bg-gold-500/20 rounded-full flex items-center justify-center mx-auto mb-4 border border-gold-400/40 text-gold-400">
+                <i data-lucide="check" class="w-8 h-8"></i>
+            </div>
+
+            <h3 class="text-2xl font-bold serif-title text-white">Booking Confirmed!</h3>
+            <p class="text-xs text-slate-300 mt-1">We’ve reserved your child's spot on the court.</p>
+
+            <div class="bg-court-800 rounded-2xl p-4 my-6 text-left space-y-2 text-xs border border-court-700">
+                <div class="flex justify-between">
+                    <span class="text-slate-400">Reference:</span>
+                    <span id="res-ref" class="font-mono text-gold-400 font-bold">RCA-88321</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-slate-400">Child's Name:</span>
+                    <span id="res-child" class="font-semibold text-white">-</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-slate-400">Location:</span>
+                    <span id="res-loc" class="font-semibold text-white">-</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-slate-400">Class Format:</span>
+                    <span id="res-plan" class="font-semibold text-white">-</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-slate-400">Slot:</span>
+                    <span id="res-slot" class="font-semibold text-white">-</span>
+                </div>
+                <div class="border-t border-court-700 pt-2 flex justify-between text-sm font-bold">
+                    <span class="text-white">Amount Due at Court:</span>
+                    <span id="res-price" class="text-gold-400">RM 45</span>
+                </div>
+            </div>
+
+            <p class="text-[11px] text-slate-400 mb-6">Bring comfortable sports shoes and water!</p>
+
+            <button onclick="closeModal()" class="w-full py-3.5 bg-gold-500 hover:bg-gold-400 text-court-900 font-bold rounded-xl text-xs transition-colors">
+                Back to Academy Homepage
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const PRICING = {
+            'Jalan Kuching, KL': {
+                'Court Kickstart': 45,
+                'Core Court Membership': 140
+            },
+            'The Hood, KL': {
+                'Court Kickstart': 50,
+                'Core Court Membership': 160
+            }
+        };
+
+        window.onload = function() {
+            lucide.createIcons();
+            updateBookingData();
+        };
+
+        function selectLocationAndScroll(locName) {
+            const locRadios = document.getElementsByName('location');
+            for (let r of locRadios) {
+                if (r.value === locName) {
+                    r.checked = true;
+                }
+            }
+            updateBookingData();
+            document.getElementById('booking-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function goToStep(stepNumber) {
+            document.getElementById('step-1').classList.add('hidden');
+            document.getElementById('step-2').classList.add('hidden');
+            document.getElementById('step-3').classList.add('hidden');
+
+            document.getElementById(`step-${stepNumber}`).classList.remove('hidden');
+
+            const progressBar = document.getElementById('progress-bar');
+            const stepLabel = document.getElementById('step-label');
+            const stepPercent = document.getElementById('step-percent');
+
+            if (stepNumber === 1) {
+                progressBar.style.width = '33%';
+                stepLabel.innerText = 'Step 1 of 3: Location & Package';
+                stepPercent.innerText = '33% Completed';
+            } else if (stepNumber === 2) {
+                progressBar.style.width = '66%';
+                stepLabel.innerText = 'Step 2 of 3: Age Group & Schedule';
+                stepPercent.innerText = '66% Completed';
+            } else if (stepNumber === 3) {
+                progressBar.style.width = '100%';
+                stepLabel.innerText = 'Step 3 of 3: Child & Parent Details';
+                stepPercent.innerText = '100% Completed';
+            }
+        }
+
+        function updateBookingData() {
+            const selectedLocation = document.querySelector('input[name="location"]:checked')?.value || 'Jalan Kuching, KL';
+            const selectedPlan = document.querySelector('input[name="plan"]:checked')?.value || 'Court Kickstart';
+            const selectedSlot = document.querySelector('input[name="timeslot"]:checked')?.value || 'Saturday 9:00 AM';
+
+            const kickstartPrice = PRICING[selectedLocation]['Court Kickstart'];
+            const membershipPrice = PRICING[selectedLocation]['Core Court Membership'];
+
+            document.getElementById('kickstart-price').innerText = `RM ${kickstartPrice}`;
+            document.getElementById('membership-price').innerText = `RM ${membershipPrice}`;
+
+            const activePrice = PRICING[selectedLocation][selectedPlan];
+
+            document.getElementById('summary-location').innerText = selectedLocation;
+            document.getElementById('summary-plan').innerText = selectedPlan;
+            document.getElementById('summary-slot').innerText = selectedSlot;
+            document.getElementById('summary-total').innerText = `RM ${activePrice}`;
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+
+            const childName = document.getElementById('childName').value;
+            const selectedLocation = document.querySelector('input[name="location"]:checked')?.value;
+            const selectedPlan = document.querySelector('input[name="plan"]:checked')?.value;
+            const selectedSlot = document.querySelector('input[name="timeslot"]:checked')?.value;
+            const activePrice = PRICING[selectedLocation][selectedPlan];
+
+            const refNo = 'RCA-' + Math.floor(10000 + Math.random() * 90000);
+
+            document.getElementById('res-ref').innerText = refNo;
+            document.getElementById('res-child').innerText = childName;
+            document.getElementById('res-loc').innerText = selectedLocation;
+            document.getElementById('res-plan').innerText = selectedPlan;
+            document.getElementById('res-slot').innerText = selectedSlot;
+            document.getElementById('res-price').innerText = `RM ${activePrice}`;
+
+            document.getElementById('confirmationModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('confirmationModal').classList.add('hidden');
+            goToStep(1);
+            document.getElementById('bookingForm').reset();
+            updateBookingData();
+        }
+
+        function toggleFaq(faqId) {
+            const content = document.getElementById(faqId);
+            const icon = document.getElementById(`icon-${faqId}`);
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                content.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+    </script>
+</body>
+</html>
