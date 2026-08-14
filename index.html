@@ -524,10 +524,19 @@
       try {
         // Cache Buster: Adds a unique timestamp to force mobile phones to grab fresh data!
         const cacheBusterUrl = GOOGLE_SCRIPT_URL + "?t=" + new Date().getTime();
-        const response = await fetch(cacheBusterUrl);
-        liveData = await response.json();
+        
+        const response = await fetch(cacheBusterUrl, {
+          method: 'GET',
+          redirect: 'follow'
+        });
+        
+        if (response.ok) {
+          liveData = await response.json();
+        } else {
+          console.warn("Google Sheet responded with an error, using default 8 spots.");
+        }
       } catch (e) {
-        console.error("Live fetch error:", e);
+        console.warn("Live fetch blocked: Ensure Google Web App access is set to 'Anyone'. Using defaults.", e.message);
       }
 
       spinner.style.display = 'none';
@@ -584,8 +593,8 @@
         // We await the fetch so we know Google received it before redirecting!
         await fetch(GOOGLE_SCRIPT_URL, {
           method: 'POST',
-          redirect: 'follow', // Fixed for Apple devices
-          headers: { 'Content-Type': 'text/plain;charset=utf-8' }, // Bypasses CORS blocks
+          mode: 'no-cors', // NEW: Guarantees Apple/Safari won't block the background save
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
           body: JSON.stringify({
             ParentName: parentName,
             ParentPhone: parentPhone,
