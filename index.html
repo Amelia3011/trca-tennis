@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -586,17 +585,24 @@
       return slots;
     }
 
-    // Mockup version of live slots (Testing mode)
+    // Connects to Google Sheets to get LIVE slot capacities
     async function fetchLiveSlots() {
       const grid = document.getElementById('calendarGrid');
       const spinner = document.getElementById('slotLoadingSpinner');
       
       const dynamicSlots = generateDynamicWeekends();
       
-      // MOCK DATA: Simulating a backend response for testing the UI
-      let mockLiveData = [];
-      if (dynamicSlots.length > 0) mockLiveData.push({ slot: dynamicSlots[0].id, remaining: 0 }); // First is FULL
-      if (dynamicSlots.length > 1) mockLiveData.push({ slot: dynamicSlots[1].id, remaining: 2 }); // Second has 2 spots
+      let liveData = [];
+      
+      // Fetch Live Data from your Google Apps Script
+      if (GOOGLE_SCRIPT_URL !== "https://script.google.com/macros/library/d/12G0Go1bohbA0CqyNqMP2SyvRhu-XhFS9ssblEUoFXW5GzEMd_AkYd=Ckv-/2") {
+        try {
+          const response = await fetch(GOOGLE_SCRIPT_URL);
+          liveData = await response.json();
+        } catch (e) {
+          console.error("Failed to fetch live slots:", e);
+        }
+      }
 
       spinner.style.display = 'none';
       grid.innerHTML = ""; 
@@ -607,8 +613,10 @@
       }
 
       dynamicSlots.forEach(slot => {
-        let remaining = 8; 
-        const backendMatch = mockLiveData.find(s => s.slot === slot.id);
+        let remaining = 8; // Default capacity
+        
+        // Match the slot ID with the live data from Google Sheets
+        const backendMatch = liveData.find(s => s.slot === slot.id);
         if (backendMatch) {
             remaining = backendMatch.remaining;
         }
