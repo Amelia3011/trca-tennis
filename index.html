@@ -397,7 +397,19 @@
     function closeModal() {
       document.getElementById('paymentModal').classList.add('hidden');
     }
-
+// NEW: Gallery scroll function
+    function scrollGallery(direction) {
+      const carousel = document.getElementById('galleryCarousel');
+      // Scroll by the exact width of the visible container
+      const scrollAmount = carousel.clientWidth;
+      
+      if (direction === 'left') {
+        carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      } else {
+        carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      }
+    }
+    
     async function sendToWhatsApp() {
       const location = "The Hood, KL";
       const packageType = document.querySelector('input[name="package"]:checked').value;
