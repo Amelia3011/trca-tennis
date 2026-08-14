@@ -659,9 +659,8 @@
           // Tell the browser to WAIT for the data to send before continuing
           await fetch(GOOGLE_SCRIPT_URL, {
             method: 'POST',
-            headers: {
-              'Content-Type': 'text/plain;charset=utf-8',
-            },
+            redirect: 'follow', // Fixed for iOS/Apple devices
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
             body: JSON.stringify({
               ParentName: parentName,
               ParentPhone: parentPhone,
