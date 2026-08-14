@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -14,14 +14,19 @@
       theme: {
         extend: {
           colors: {
-            court: {
-              50: '#f2f7f4',
-              100: '#e1ede6',
-              500: '#2d6a4f',
-              600: '#1b4332',
-              700: '#081c15',
-              accent: '#d8f3dc',
-              gold: '#d4af37'
+            brand: {
+              50: '#f4efff',  // Softest lilac
+              100: '#E7DDFF', // Your requested soft purple!
+              200: '#d0c3fe', // Muted purple for borders
+              500: '#a78bfa', // Primary soft pastel purple
+              600: '#8b5cf6', // Slightly deeper for hovers
+              700: '#6d28d9', // High contrast purple for text
+              900: '#4c1d95', // Deep purple for headers
+            },
+            accent: {
+              100: '#fce7f3', // Soft pastel pink
+              500: '#f472b6', // Muted pink accent
+              600: '#db2777',
             }
           },
           fontFamily: {
@@ -32,145 +37,186 @@
     }
   </script>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between">
+<body class="bg-gradient-to-br from-brand-50 to-brand-100 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between">
 
-  <!-- Header / Navigation -->
-  <header class="bg-white border-b border-slate-200 sticky top-0 z-30">
+  <!-- Header -->
+  <header class="bg-white/80 backdrop-blur-md border-b border-brand-200 sticky top-0 z-30 shadow-sm">
     <div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
       <div class="flex items-center space-x-3">
-        <div class="w-10 h-10 rounded-full bg-court-600 flex items-center justify-center text-white font-bold text-lg shadow">
+        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-brand-500 to-accent-600 flex items-center justify-center text-white font-bold text-lg shadow-md">
           RCA
         </div>
         <div>
           <h1 class="font-bold text-slate-900 leading-none">The Royal Court Academy</h1>
-          <p class="text-xs text-slate-500 mt-1">Junior Tennis Excellence</p>
+          <p class="text-xs text-brand-600 mt-1 font-medium">Junior Tennis Excellence</p>
         </div>
       </div>
-      <span class="text-xs font-semibold uppercase tracking-wider bg-court-100 text-court-600 px-3 py-1 rounded-full border border-court-500/20">
-        Kids Program (Ages 4-12)
+      
+      <!-- NEW: Desktop Navigation Links -->
+      <nav class="hidden md:flex space-x-6 items-center">
+        <a href="#about" class="text-sm font-bold text-slate-600 hover:text-brand-600 transition-colors">About Us</a>
+        <a href="#gallery" class="text-sm font-bold text-slate-600 hover:text-brand-600 transition-colors">Class Gallery</a>
+        <a href="#bookingForm" class="text-sm font-bold text-slate-600 hover:text-brand-600 transition-colors">Book a Class</a>
+      </nav>
+
+      <span class="md:hidden text-[10px] font-semibold uppercase tracking-wider bg-brand-100 text-brand-700 px-2 py-1 rounded-full border border-brand-200">
+        Kids (4-12)
       </span>
+    </div>
+    
+    <!-- NEW: Mobile Navigation (Visible only on phones) -->
+    <div class="md:hidden border-t border-brand-100 bg-brand-50/50 px-2 py-2.5 flex justify-evenly">
+       <a href="#about" class="text-xs font-bold text-slate-700 hover:text-brand-600 flex items-center gap-1"><i data-lucide="info" class="w-3.5 h-3.5"></i> About</a>
+       <a href="#gallery" class="text-xs font-bold text-slate-700 hover:text-brand-600 flex items-center gap-1"><i data-lucide="image" class="w-3.5 h-3.5"></i> Gallery</a>
+       <a href="#bookingForm" class="text-xs font-bold text-slate-700 hover:text-brand-600 flex items-center gap-1"><i data-lucide="calendar-plus" class="w-3.5 h-3.5"></i> Book Now</a>
     </div>
   </header>
 
-  <!-- Main Container -->
+  <!-- Main Content -->
   <main class="max-w-4xl mx-auto px-4 py-8 flex-grow w-full">
     
     <!-- Hero Banner -->
-    <div class="bg-court-600 text-white rounded-2xl p-6 md:p-8 mb-8 shadow-xl relative overflow-hidden">
+    <div class="bg-[#FFEB99] text-slate-900 rounded-3xl p-6 md:p-8 mb-8 shadow-xl relative overflow-hidden border border-amber-200">
       <div class="relative z-10 max-w-xl">
-        <span class="text-court-gold text-xs font-bold uppercase tracking-widest bg-court-700/50 px-3 py-1 rounded-md">Enrollment Open</span>
-        <h2 class="text-2xl md:text-3xl font-extrabold mt-3 mb-2 leading-tight">Start Your Child's Tennis Journey</h2>
-        <p class="text-court-accent text-sm md:text-base opacity-90">Select a court location, pick your training pass, and confirm your child's spot in seconds.</p>
+        <span class="text-amber-900 text-xs font-bold uppercase tracking-widest bg-amber-400/40 px-3 py-1.5 rounded-lg backdrop-blur-sm">Enrollment Open</span>
+        
+        <!-- Add your image here -->
+        <img src="YOUR_DIRECT_IMAGE_LINK_HERE" alt="Kids playing tennis" class="w-full h-48 object-cover rounded-2xl mt-4 mb-4 shadow-lg border-2 border-white/60">
+
+        <h2 class="text-2xl md:text-3xl font-extrabold mb-2 leading-tight">Start Your Child's Tennis Journey</h2>
+        <p class="text-slate-700 text-sm md:text-base font-medium">Pick your training pass and confirm your child's spot at our premium indoor facility.</p>
       </div>
-      <div class="absolute -right-10 -bottom-10 opacity-10 text-white pointer-events-none">
-        <i data-lucide="trophy" class="w-64 h-64"></i>
+      <div class="absolute -right-10 -bottom-10 text-amber-500 pointer-events-none opacity-20 transform rotate-12">
+        <i data-lucide="sparkles" class="w-64 h-64"></i>
       </div>
     </div>
 
-    <!-- Interactive Registration Form -->
-    <form id="bookingForm" onsubmit="handleFormSubmit(event)" class="space-y-8">
-      
-      <!-- Step 1: Select Location -->
-      <section class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+    <!-- NEW: About Us Section -->
+    <section id="about" class="mb-10 scroll-mt-24">
+      <div class="bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-brand-200 relative overflow-hidden">
+        <!-- Background decoration -->
+        <div class="absolute top-0 right-0 w-32 h-32 bg-brand-50 rounded-bl-full -z-10 opacity-70"></div>
+        
         <div class="flex items-center space-x-3 mb-4">
-          <div class="w-7 h-7 rounded-full bg-court-100 text-court-600 flex items-center justify-center font-bold text-sm">1</div>
-          <h3 class="text-lg font-bold text-slate-900">Select Location</h3>
+          <div class="w-8 h-8 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center shadow-sm border border-brand-200">
+            <i data-lucide="info" class="w-4 h-4"></i>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900">About Our Academy</h3>
         </div>
         
-        <div class="grid md:grid-cols-2 gap-4">
-          <!-- Jalan Kuching Card -->
-          <label class="relative border-2 border-slate-200 rounded-xl p-4 cursor-pointer hover:border-court-500 transition-all has-[:checked]:border-court-600 has-[:checked]:bg-court-50/50">
-            <input type="radio" name="location" value="Jalan Kuching, KL" class="sr-only" checked onchange="updatePricing()">
-            <div class="flex justify-between items-start">
-              <div>
-                <span class="font-bold text-slate-900 block text-base">Jalan Kuching, KL</span>
-                <span class="text-xs text-slate-500 mt-1 block">Outdoor & Indoor Courts</span>
-              </div>
-              <i data-lucide="map-pin" class="text-court-500 w-5 h-5"></i>
+        <p class="text-slate-600 text-sm md:text-base leading-relaxed mb-8 font-medium">
+          At The Royal Court Academy, we believe in nurturing the next generation of tennis champions in a fun, supportive, and highly engaging environment. Our tailored kids' programs focus on building core motor skills, tennis fundamentals, and sportsmanship that lasts a lifetime.
+        </p>
+        
+        <div class="grid grid-cols-3 gap-4">
+          <div class="flex flex-col items-center text-center">
+            <div class="w-12 h-12 rounded-full bg-accent-100 text-accent-600 flex items-center justify-center mb-2 shadow-sm border border-accent-200">
+              <i data-lucide="heart" class="w-6 h-6"></i>
             </div>
-            <div class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-xs text-slate-600">
-              <span>Limit: 30 Kids / Slot</span>
-              <span class="text-emerald-600 font-semibold bg-emerald-50 px-2 py-0.5 rounded">24 Spots Remaining</span>
+            <span class="text-xs font-bold text-slate-700">Fun First</span>
+          </div>
+          <div class="flex flex-col items-center text-center">
+            <div class="w-12 h-12 rounded-full bg-[#FFEB99] text-amber-700 flex items-center justify-center mb-2 shadow-sm border border-amber-200">
+              <i data-lucide="award" class="w-6 h-6"></i>
             </div>
-          </label>
-
-          <!-- The Hood Card -->
-          <label class="relative border-2 border-slate-200 rounded-xl p-4 cursor-pointer hover:border-court-500 transition-all has-[:checked]:border-court-600 has-[:checked]:bg-court-50/50">
-            <input type="radio" name="location" value="The Hood, KL" class="sr-only" onchange="updatePricing()">
-            <div class="flex justify-between items-start">
-              <div>
-                <span class="font-bold text-slate-900 block text-base">The Hood, KL</span>
-                <span class="text-xs text-slate-500 mt-1 block">Community Sports Complex</span>
-              </div>
-              <i data-lucide="map-pin" class="text-court-500 w-5 h-5"></i>
+            <span class="text-xs font-bold text-slate-700">Pro Coaches</span>
+          </div>
+          <div class="flex flex-col items-center text-center">
+            <div class="w-12 h-12 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center mb-2 shadow-sm border border-brand-200">
+              <i data-lucide="users" class="w-6 h-6"></i>
             </div>
-            <div class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-xs text-slate-600">
-              <span>Limit: 30 Kids / Slot</span>
-              <span class="text-emerald-600 font-semibold bg-emerald-50 px-2 py-0.5 rounded">18 Spots Remaining</span>
-            </div>
-          </label>
+            <span class="text-xs font-bold text-slate-700">Small Groups</span>
+          </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- Step 2: Select Package -->
-      <section class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
-        <div class="flex items-center space-x-3 mb-4">
-          <div class="w-7 h-7 rounded-full bg-court-100 text-court-600 flex items-center justify-center font-bold text-sm">2</div>
-          <h3 class="text-lg font-bold text-slate-900">Choose Class Format</h3>
+    <!-- NEW: Class Gallery Section -->
+    <section id="gallery" class="mb-10 scroll-mt-24">
+      <div class="flex items-center space-x-3 mb-5 pl-2">
+        <div class="w-8 h-8 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center shadow-sm border border-brand-200">
+          <i data-lucide="camera" class="w-4 h-4"></i>
         </div>
+        <h3 class="text-xl font-bold text-slate-900">Class Gallery</h3>
+      </div>
+      
+      <!-- Photo Grid -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <!-- Photo 1 -->
+        <div class="aspect-square bg-white rounded-2xl overflow-hidden border border-brand-200 shadow-sm relative group">
+          <img src="https://placehold.co/400x400/E7DDFF/6d28d9?text=Photo+1" alt="Class Photo 1" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+        </div>
+        <!-- Photo 2 -->
+        <div class="aspect-square bg-white rounded-2xl overflow-hidden border border-brand-200 shadow-sm relative group">
+          <img src="https://placehold.co/400x400/E7DDFF/6d28d9?text=Photo+2" alt="Class Photo 2" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+        </div>
+        <!-- Photo 3 -->
+        <div class="aspect-square bg-white rounded-2xl overflow-hidden border border-brand-200 shadow-sm relative group">
+          <img src="https://placehold.co/400x400/E7DDFF/6d28d9?text=Photo+3" alt="Class Photo 3" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+        </div>
+        <!-- Photo 4 -->
+        <div class="aspect-square bg-white rounded-2xl overflow-hidden border border-brand-200 shadow-sm relative group">
+          <img src="https://placehold.co/400x400/E7DDFF/6d28d9?text=Photo+4" alt="Class Photo 4" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+        </div>
+      </div>
+      <p class="text-xs text-brand-600/70 mt-3 text-center font-medium italic">Happy faces from our previous sessions!</p>
+    </section>
 
-        <div class="grid md:grid-cols-2 gap-4">
-          <!-- Court Kickstart (Ad Hoc) -->
-          <label class="relative border-2 border-slate-200 rounded-xl p-5 cursor-pointer hover:border-court-500 transition-all has-[:checked]:border-court-600 has-[:checked]:bg-court-50/50">
+    <!-- Form Section starts here -->
+    <form id="bookingForm" onsubmit="handleFormSubmit(event)" class="space-y-6 scroll-mt-24">
+          <label class="relative border-2 border-slate-200 rounded-2xl p-5 cursor-pointer hover:border-accent-300 transition-all has-[:checked]:border-accent-500 has-[:checked]:bg-accent-50/50 has-[:checked]:shadow-md">
             <input type="radio" name="package" value="Court Kickstart" class="sr-only" checked onchange="updatePricing()">
             <div class="flex justify-between items-start">
               <div>
-                <span class="inline-block bg-slate-100 text-slate-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase mb-2">Single Session</span>
+                <span class="inline-block bg-slate-100 text-slate-600 text-[10px] font-bold px-2 py-0.5 rounded uppercase mb-2">Single Session</span>
                 <h4 class="font-bold text-slate-900 text-base">Court Kickstart</h4>
               </div>
-              <span id="adhocPriceDisplay" class="text-xl font-extrabold text-court-600">RM 45</span>
+              <span id="adhocPriceDisplay" class="text-xl font-black text-accent-600">RM 50</span>
             </div>
-            <p class="text-xs text-slate-500 mt-2">1-hour drop-in class. Perfect for beginners testing out tennis without upfront commitment.</p>
+            <p class="text-xs text-slate-500 mt-2 leading-relaxed">1-hour drop-in class. Perfect for beginners testing out tennis without an upfront commitment.</p>
           </label>
 
-          <!-- Core Court Membership (Package) -->
-          <label class="relative border-2 border-slate-200 rounded-xl p-5 cursor-pointer hover:border-court-500 transition-all has-[:checked]:border-court-600 has-[:checked]:bg-court-50/50">
+          <!-- Package -->
+          <label class="relative border-2 border-slate-200 rounded-2xl p-5 cursor-pointer hover:border-brand-300 transition-all has-[:checked]:border-brand-500 has-[:checked]:bg-brand-50/50 has-[:checked]:shadow-md">
             <input type="radio" name="package" value="Core Court Membership" class="sr-only" onchange="updatePricing()">
+            <div class="absolute -top-3 -right-2">
+              <span class="bg-gradient-to-r from-amber-400 to-amber-500 text-white text-[10px] font-black px-3 py-1 rounded-full shadow-md border border-amber-300 uppercase tracking-wide">Best Value (Save RM 40)</span>
+            </div>
             <div class="flex justify-between items-start">
               <div>
-                <span class="inline-block bg-amber-100 text-amber-800 text-[10px] font-bold px-2 py-0.5 rounded uppercase mb-2">Best Value (Save RM 40)</span>
-                <h4 class="font-bold text-slate-900 text-base">Core Court Membership</h4>
+                <h4 class="font-bold text-slate-900 text-base mt-2">Core Court Membership</h4>
               </div>
-              <span id="packagePriceDisplay" class="text-xl font-extrabold text-court-600">RM 140</span>
+              <span id="packagePriceDisplay" class="text-xl font-black text-brand-600 mt-2">RM 160</span>
             </div>
-            <p class="text-xs text-slate-500 mt-2">4 sessions per month (1 hr/week). Structured weekly skill development and progression.</p>
+            <p class="text-xs text-slate-500 mt-2 leading-relaxed">4 sessions per month (1 hr/week). Structured weekly skill development and steady progression.</p>
           </label>
         </div>
       </section>
 
-      <!-- Step 3: Player Details -->
-      <section class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
-        <div class="flex items-center space-x-3 mb-4">
-          <div class="w-7 h-7 rounded-full bg-court-100 text-court-600 flex items-center justify-center font-bold text-sm">3</div>
+      <!-- Step 3: Details -->
+      <section class="bg-white rounded-3xl p-6 shadow-sm border border-brand-100 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-2 h-full bg-brand-500"></div>
+        <div class="flex items-center space-x-3 mb-4 pl-2">
+          <div class="w-7 h-7 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center font-bold text-sm">3</div>
           <h3 class="text-lg font-bold text-slate-900">Student & Parent Details</h3>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-4">
+        <div class="grid md:grid-cols-2 gap-5 pl-2">
           <div>
-            <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Parent's Full Name</label>
-            <input type="text" id="parentName" required placeholder="e.g. Sarah Ahmad" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-court-500 focus:outline-none text-sm">
+            <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Parent's Full Name</label>
+            <input type="text" id="parentName" required placeholder="e.g. Sarah Ahmad" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 focus:outline-none text-sm bg-slate-50 transition-all">
           </div>
           <div>
-            <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">WhatsApp Mobile Number</label>
-            <input type="tel" id="parentPhone" required placeholder="e.g. 0123456789" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-court-500 focus:outline-none text-sm">
+            <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">WhatsApp Mobile Number</label>
+            <input type="tel" id="parentPhone" required placeholder="e.g. 0123456789" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 focus:outline-none text-sm bg-slate-50 transition-all">
           </div>
           <div>
-            <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Child's Name</label>
-            <input type="text" id="childName" required placeholder="e.g. Adam" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-court-500 focus:outline-none text-sm">
+            <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Child's Name</label>
+            <input type="text" id="childName" required placeholder="e.g. Adam" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 focus:outline-none text-sm bg-slate-50 transition-all">
           </div>
           <div>
-            <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Child's Age (4-12 Years)</label>
-            <select id="childAge" required class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-court-500 focus:outline-none text-sm">
+            <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Child's Age (4-12 Years)</label>
+            <select id="childAge" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 focus:outline-none text-sm bg-slate-50 transition-all appearance-none cursor-pointer">
               <option value="">Select Age</option>
               <option value="4">4 Years Old</option>
               <option value="5">5 Years Old</option>
@@ -187,82 +233,112 @@
       </section>
 
       <!-- Submit Action Bar -->
-      <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-lg flex flex-col md:flex-row items-center justify-between gap-4 sticky bottom-4 z-20">
-        <div>
-          <span class="text-xs text-slate-500 block">Total Due:</span>
-          <span id="finalTotalDisplay" class="text-2xl font-black text-court-600">RM 45.00</span>
+      <div class="bg-white p-5 rounded-3xl border border-brand-200 shadow-xl flex flex-col md:flex-row items-center justify-between gap-4 sticky bottom-4 z-20">
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 rounded-full bg-brand-50 flex items-center justify-center text-brand-600">
+             <i data-lucide="credit-card" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <span class="text-xs font-bold text-slate-500 block uppercase tracking-wider">Total Due</span>
+            <span id="finalTotalDisplay" class="text-3xl font-black text-brand-600 tracking-tight">RM 50.00</span>
+          </div>
         </div>
-        <button type="submit" class="w-full md:w-auto bg-court-600 hover:bg-court-700 text-white font-bold px-8 py-3.5 rounded-xl shadow-lg transition-all flex items-center justify-center space-x-2">
+        <button type="submit" id="submitBtn" class="w-full md:w-auto bg-gradient-to-r from-brand-600 to-accent-600 hover:from-brand-700 hover:to-accent-700 text-white font-bold px-8 py-4 rounded-2xl shadow-lg shadow-brand-500/30 transition-all transform hover:-translate-y-0.5 flex items-center justify-center space-x-2">
           <span>Proceed to Payment</span>
           <i data-lucide="arrow-right" class="w-5 h-5"></i>
         </button>
       </div>
 
     </form>
-
   </main>
 
   <!-- Payment Modal -->
   <div id="paymentModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl space-y-5 relative animate-in fade-in zoom-in duration-200">
+    <div class="bg-white rounded-3xl max-w-md w-full p-8 shadow-2xl space-y-6 relative animate-in fade-in zoom-in duration-200 border border-brand-100">
       
-      <button onclick="closeModal()" class="absolute right-4 top-4 text-slate-400 hover:text-slate-600">
-        <i data-lucide="x" class="w-6 h-6"></i>
+      <button onclick="closeModal()" class="absolute right-5 top-5 text-slate-400 hover:text-brand-600 bg-slate-50 p-2 rounded-full transition-colors">
+        <i data-lucide="x" class="w-5 h-5"></i>
       </button>
 
-      <div class="text-center">
-        <div class="w-12 h-12 bg-court-100 text-court-600 rounded-full flex items-center justify-center mx-auto mb-3">
-          <i data-lucide="qr-code" class="w-6 h-6"></i>
+      <div class="text-center pt-2">
+        <div class="w-14 h-14 bg-gradient-to-br from-brand-100 to-accent-100 text-brand-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-sm border border-brand-200 transform rotate-3">
+          <i data-lucide="qr-code" class="w-7 h-7 -rotate-3"></i>
         </div>
-        <h3 class="text-xl font-bold text-slate-900">Scan & Pay via DuitNow</h3>
-        <p class="text-xs text-slate-500 mt-1">Scan using any Malaysian Banking App or E-Wallet</p>
+        <h3 class="text-2xl font-black text-slate-900">Scan & Pay via DuitNow</h3>
+        <p class="text-xs font-medium text-slate-500 mt-2">Scan using any Malaysian Banking App or E-Wallet</p>
       </div>
 
-      <!-- DuitNow QR Placeholder Box -->
-      <div class="bg-slate-100 border-2 border-dashed border-slate-300 rounded-xl p-6 flex flex-col items-center justify-center text-center">
-        <div class="w-48 h-48 bg-white border border-slate-200 rounded-lg flex flex-col items-center justify-center shadow-inner relative">
-          <!-- Replace this icon/text with your actual DuitNow QR image tag when ready -->
-          <i data-lucide="qr-code" class="w-32 h-32 text-slate-800"></i>
-          <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mt-1">DuitNow QR</span>
+      <div class="bg-slate-50 border-2 border-dashed border-brand-200 rounded-2xl p-6 flex flex-col items-center justify-center text-center">
+        <!-- REPLACE qr.png with your actual image upload -->
+        <div class="w-48 h-48 bg-white border border-slate-200 rounded-xl flex items-center justify-center p-2 shadow-sm">
+          <img src="qr.png" alt="DuitNow QR Code" class="w-full h-full object-contain" onerror="this.outerHTML='<div class=\'text-brand-300 flex flex-col items-center\'><i data-lucide=\'image\' class=\'w-12 h-12 mb-2\'></i><span class=\'text-xs font-bold\'>Upload qr.png</span></div>'">
         </div>
-        <div class="mt-4 text-center">
-          <span class="text-xs text-slate-500 block">Amount to Transfer:</span>
-          <span id="modalAmountDisplay" class="text-2xl font-black text-court-600">RM 45.00</span>
+        <div class="mt-5 text-center bg-white px-6 py-2 rounded-full shadow-sm border border-slate-100">
+          <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-0.5">Amount to Transfer</span>
+          <span id="modalAmountDisplay" class="text-2xl font-black text-brand-600">RM 50.00</span>
         </div>
       </div>
 
-      <div class="space-y-3">
-        <button onclick="sendToWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 rounded-xl shadow-lg transition-all flex items-center justify-center space-x-2">
+      <div class="space-y-3 pt-2">
+        <button onclick="sendToWhatsApp()" class="w-full bg-[#25D366] hover:bg-[#1ebd5a] text-white font-bold py-4 rounded-2xl shadow-lg shadow-[#25D366]/30 transition-all transform hover:-translate-y-0.5 flex items-center justify-center space-x-2">
           <i data-lucide="message-circle" class="w-5 h-5"></i>
           <span>Submit & Confirm via WhatsApp</span>
         </button>
-        <p class="text-[11px] text-center text-slate-400">Clicking above opens WhatsApp with your pre-filled booking details to send to our coaching staff.</p>
+        <p class="text-[11px] font-medium text-center text-slate-400">Clicking above logs your registration to Google Sheets and redirects to WhatsApp.</p>
       </div>
 
     </div>
   </div>
 
   <script>
-    // Initialize Lucide Icons
     lucide.createIcons();
 
-    // Location Price Mapping
+    // PASTE YOUR SHEETBEST CONNECTION URL HERE
+    const SHEETBEST_URL = "YOUR_SHEETBEST_CONNECTION_URL_HERE"; 
+    // REPLACE WITH YOUR ACTUAL PHONE NUMBER
+    const COACH_WHATSAPP = "60123456789"; 
+
+    const MAX_SPOTS = 30;
+    
+    // Only The Hood pricing remains
     const pricing = {
-      'Jalan Kuching, KL': { adhoc: 45, package: 140 },
       'The Hood, KL': { adhoc: 50, package: 160 }
     };
 
-    let selectedTotal = 45;
+    // Default total is now RM 50 (The Hood - Court Kickstart)
+    let selectedTotal = 50;
+
+    // Fetch Live Bookings from Google Sheets on Page Load
+    async function fetchSpotCounts() {
+      if (SHEETBEST_URL === "YOUR_SHEETBEST_CONNECTION_URL_HERE") {
+        document.getElementById('hoodSpots').innerHTML = `<span class="w-2 h-2 rounded-full bg-brand-500"></span> 18 Spots Remaining`;
+        return;
+      }
+
+      try {
+        const response = await fetch(SHEETBEST_URL);
+        const data = await response.json();
+        
+        // Count total rows that belong to The Hood
+        const hoodCount = data.filter(row => row.Location === 'The Hood, KL').length;
+        const hoodRemaining = Math.max(0, MAX_SPOTS - hoodCount);
+
+        let statusColor = "bg-brand-500";
+        if(hoodRemaining <= 5) statusColor = "bg-red-500 animate-pulse";
+
+        document.getElementById('hoodSpots').innerHTML = `<span class="w-2 h-2 rounded-full ${statusColor}"></span> ${hoodRemaining} Spots Remaining`;
+      } catch (err) {
+        document.getElementById('hoodSpots').innerHTML = `<span class="w-2 h-2 rounded-full bg-slate-300"></span> 30 Spots Remaining`;
+      }
+    }
 
     function updatePricing() {
-      const location = document.querySelector('input[name="location"]:checked').value;
+      // Location is fixed to The Hood
+      const location = "The Hood, KL";
       const packageType = document.querySelector('input[name="package"]:checked').value;
 
       const adhocPrice = pricing[location].adhoc;
       const packagePrice = pricing[location].package;
-
-      document.getElementById('adhocPriceDisplay').innerText = `RM ${adhocPrice}`;
-      document.getElementById('packagePriceDisplay').innerText = `RM ${packagePrice}`;
 
       selectedTotal = (packageType === 'Court Kickstart') ? adhocPrice : packagePrice;
       document.getElementById('finalTotalDisplay').innerText = `RM ${selectedTotal}.00`;
@@ -278,29 +354,57 @@
       document.getElementById('paymentModal').classList.add('hidden');
     }
 
-    function sendToWhatsApp() {
-      const location = document.querySelector('input[name="location"]:checked').value;
+    async function sendToWhatsApp() {
+      const location = "The Hood, KL";
       const packageType = document.querySelector('input[name="package"]:checked').value;
       const parentName = document.getElementById('parentName').value;
       const parentPhone = document.getElementById('parentPhone').value;
       const childName = document.getElementById('childName').value;
       const childAge = document.getElementById('childAge').value;
 
-      // RCA Whatsapp Contact Number (Replace with your actual number)
-      const coachWhatsAppNumber = "601112985037";
+      // Save row to Google Sheets via SheetBest API
+      if (SHEETBEST_URL !== "YOUR_SHEETBEST_CONNECTION_URL_HERE") {
+        try {
+          // Send request without awaiting to immediately open WhatsApp for the user
+          fetch(SHEETBEST_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              Timestamp: new Date().toLocaleString("en-MY"),
+              ParentName: parentName,
+              ParentPhone: parentPhone,
+              ChildName: childName,
+              ChildAge: childAge,
+              Location: location,
+              Package: packageType,
+              Amount: `RM ${selectedTotal}`
+            })
+          });
+        } catch (e) {
+          console.error("Sheets save error:", e);
+        }
+      }
 
-      const message = `*NEW KIDS TENNIS REGISTRATION*%0A%0A` +
-        `*Parent Name:* ${parentName}%0A` +
+      // WhatsApp Redirect
+      const message = `*🎾 NEW KIDS TENNIS REGISTRATION*%0A%0A` +
+        `*Parent:* ${parentName}%0A` +
         `*Phone:* ${parentPhone}%0A` +
-        `*Child Name:* ${childName}%0A` +
-        `*Child Age:* ${childAge} years old%0A` +
+        `*Child:* ${childName} (${childAge} years old)%0A` +
         `*Location:* ${location}%0A` +
         `*Class Format:* ${packageType}%0A` +
         `*Total Amount:* RM ${selectedTotal}%0A%0A` +
-        `_I have completed the QR payment / wish to confirm my spot._`;
+        `_I have completed the QR payment and wish to confirm my spot._`;
 
-      window.open(`https://wa.me/${coachWhatsAppNumber}?text=${message}`, '_blank');
+      window.open(`https://wa.me/${COACH_WHATSAPP}?text=${message}`, '_blank');
+      
+      // Close modal after opening WhatsApp
+      closeModal();
+      document.getElementById('bookingForm').reset();
+      updatePricing();
     }
+
+    // Initialize counts on page load
+    fetchSpotCounts();
   </script>
 </body>
 </html>
