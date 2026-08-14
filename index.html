@@ -195,8 +195,25 @@
       </div>
     </section>
 
-    <!-- Booking Form Starts Here -->
+     <!-- Booking Form Starts Here -->
     <form id="bookingForm" onsubmit="handleFormSubmit(event)" class="space-y-8">
+
+      <!-- MOVED: Registration Fee Checkbox -->
+      <div id="regFeeContainer" class="bg-gradient-to-r from-brand-100 to-accent-50 rounded-2xl p-5 border border-brand-200 flex items-center justify-between transition-opacity duration-300">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-accent-600 shadow-sm">
+            <i data-lucide="shirt" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-slate-900">First-Time Registration? (+RM 30)</h4>
+            <p class="text-xs text-slate-600 font-medium">Includes a FREE exclusive RCA T-shirt for your child!</p>
+          </div>
+        </div>
+        <label class="relative inline-flex items-center cursor-pointer">
+          <input type="checkbox" id="newStudentCheck" class="sr-only peer" checked onchange="updatePricing()">
+          <div class="w-11 h-6 bg-slate-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-brand-600"></div>
+        </label>
+      </div>
 
       <!-- Step 2: Package -->
       <section class="bg-white rounded-2xl p-6 shadow-sm border border-brand-200">
@@ -205,33 +222,48 @@
           <h3 class="text-lg font-bold text-slate-900">Choose Class Format</h3>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          
+          <!-- NEW: Casual Drop-in (Adhoc) -->
+          <label class="relative border-2 border-slate-200 rounded-xl p-5 cursor-pointer hover:border-brand-500 transition-all has-[:checked]:border-brand-600 has-[:checked]:bg-brand-50/50 flex flex-col justify-between">
+            <input type="radio" name="package" value="Casual Drop-in (Adhoc)" class="sr-only" onchange="updatePricing()">
+            <div>
+              <div class="flex justify-between items-start mb-2">
+                <span class="inline-block bg-slate-100 text-slate-700 text-[10px] font-bold px-2 py-1 rounded uppercase">No Commit</span>
+                <span class="text-xl font-extrabold text-brand-600">RM 60</span>
+              </div>
+              <h4 class="font-bold text-slate-900 text-base mb-1">Casual Drop-in (Adhoc)</h4>
+              <p class="text-xs text-slate-500 leading-relaxed">Perfect for testing the waters. One-off class with zero upfront commitment.</p>
+            </div>
+          </label>
+
+          <!-- UPDATED: Court Kickstart -->
           <label class="relative border-2 border-slate-200 rounded-xl p-5 cursor-pointer hover:border-brand-500 transition-all has-[:checked]:border-brand-600 has-[:checked]:bg-brand-50/50 flex flex-col justify-between">
             <input type="radio" name="package" value="Court Kickstart" class="sr-only" checked onchange="updatePricing()">
             <div>
               <div class="flex justify-between items-start mb-2">
-                <span class="inline-block bg-slate-100 text-slate-700 text-[10px] font-bold px-2 py-1 rounded uppercase">Single Session</span>
-                <span id="adhocPriceDisplay" class="text-xl font-extrabold text-brand-600">RM 50</span>
+                <span class="inline-block bg-slate-100 text-slate-700 text-[10px] font-bold px-2 py-1 rounded uppercase">Flexible</span>
+                <span class="text-xl font-extrabold text-brand-600">RM 50</span>
               </div>
               <h4 class="font-bold text-slate-900 text-base mb-1">Court Kickstart</h4>
-              <p class="text-xs text-slate-500 leading-relaxed">1.5-hour drop-in class. Perfect for beginners testing out tennis without upfront commitment.</p>
+              <p class="text-xs text-slate-500 leading-relaxed">Flexible attendance. Drop in when you can. (Requires RM30 Reg. Fee for first-timers).</p>
             </div>
           </label>
 
+          <!-- EXISTING: Core Court Membership -->
           <label class="relative border-2 border-slate-200 rounded-xl p-5 cursor-pointer hover:border-brand-500 transition-all has-[:checked]:border-brand-600 has-[:checked]:bg-brand-50/50 flex flex-col justify-between overflow-hidden">
             <input type="radio" name="package" value="Core Court Membership" class="sr-only" onchange="updatePricing()">
             
-            <!-- Adjust absolute tag positioning -->
             <div class="absolute top-0 right-0">
-               <span class="inline-block bg-gradient-to-r from-amber-400 to-amber-500 text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg shadow-sm uppercase tracking-wider">Best Value (Save RM 40)</span>
+               <span class="inline-block bg-gradient-to-r from-amber-400 to-amber-500 text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg shadow-sm uppercase tracking-wider">Best Value</span>
             </div>
 
             <div class="mt-4">
               <div class="flex justify-between items-start mb-2 mt-2">
                 <h4 class="font-bold text-slate-900 text-base">Core Court Membership</h4>
-                <span id="packagePriceDisplay" class="text-xl font-extrabold text-brand-600">RM 160</span>
+                <span class="text-xl font-extrabold text-brand-600">RM 160</span>
               </div>
-              <p class="text-xs text-slate-500 leading-relaxed">4 sessions per month (1.5 hr/week). Structured weekly skill development and progression.</p>
+              <p class="text-xs text-slate-500 leading-relaxed">4 sessions/month. Structured weekly progression. (Requires RM30 Reg. Fee for first-timers).</p>
             </div>
           </label>
         </div>
@@ -366,65 +398,79 @@
   <script>
     lucide.createIcons();
 
-    // PASTE YOUR SHEETBEST CONNECTION URL HERE
-    const SHEETBEST_URL = "YOUR_SHEETBEST_CONNECTION_URL_HERE"; 
-    // REPLACE WITH YOUR ACTUAL PHONE NUMBER
-    const COACH_WHATSAPP = "601112985037"; 
+     <!-- Booking Form Starts Here -->
+    <form id="bookingForm" onsubmit="handleFormSubmit(event)" class="space-y-8">
 
-    const MAX_SPOTS = 30;
-    
-    // Only The Hood pricing remains
-    const pricing = {
-      'The Hood, KL': { adhoc: 50, package: 160 }
-    };
+      <!-- MOVED: Registration Fee Checkbox -->
+      <div id="regFeeContainer" class="bg-gradient-to-r from-brand-100 to-accent-50 rounded-2xl p-5 border border-brand-200 flex items-center justify-between transition-opacity duration-300">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-accent-600 shadow-sm">
+            <i data-lucide="shirt" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-slate-900">First-Time Registration? (+RM 30)</h4>
+            <p class="text-xs text-slate-600 font-medium">Includes a FREE exclusive RCA T-shirt for your child!</p>
+          </div>
+        </div>
+        <label class="relative inline-flex items-center cursor-pointer">
+          <input type="checkbox" id="newStudentCheck" class="sr-only peer" checked onchange="updatePricing()">
+          <div class="w-11 h-6 bg-slate-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-brand-600"></div>
+        </label>
+      </div>
 
-    // Default total is now RM 50 (The Hood - Court Kickstart)
-    let selectedTotal = 50;
+      <!-- Step 2: Package -->
+      <section class="bg-white rounded-2xl p-6 shadow-sm border border-brand-200">
+        <div class="flex items-center space-x-3 mb-4">
+          <div class="w-7 h-7 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center font-bold text-sm">2</div>
+          <h3 class="text-lg font-bold text-slate-900">Choose Class Format</h3>
+        </div>
 
-    // Fetch Live Bookings from Google Sheets on Page Load
-    async function fetchSpotCounts() {
-      if (SHEETBEST_URL === "YOUR_SHEETBEST_CONNECTION_URL_HERE") {
-        document.getElementById('hoodSpots').innerHTML = `<span class="w-2 h-2 rounded-full bg-brand-500"></span> 18 Spots Remaining`;
-        return;
-      }
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          
+          <!-- NEW: Casual Drop-in (Adhoc) -->
+          <label class="relative border-2 border-slate-200 rounded-xl p-5 cursor-pointer hover:border-brand-500 transition-all has-[:checked]:border-brand-600 has-[:checked]:bg-brand-50/50 flex flex-col justify-between">
+            <input type="radio" name="package" value="Casual Drop-in (Adhoc)" class="sr-only" onchange="updatePricing()">
+            <div>
+              <div class="flex justify-between items-start mb-2">
+                <span class="inline-block bg-slate-100 text-slate-700 text-[10px] font-bold px-2 py-1 rounded uppercase">No Commit</span>
+                <span class="text-xl font-extrabold text-brand-600">RM 60</span>
+              </div>
+              <h4 class="font-bold text-slate-900 text-base mb-1">Casual Drop-in (Adhoc)</h4>
+              <p class="text-xs text-slate-500 leading-relaxed">Perfect for testing the waters. One-off class with zero upfront commitment.</p>
+            </div>
+          </label>
 
-      try {
-        const response = await fetch(SHEETBEST_URL);
-        const data = await response.json();
-        
-        // Count total rows that belong to The Hood
-        const hoodCount = data.filter(row => row.Location === 'The Hood, KL').length;
-        const hoodRemaining = Math.max(0, MAX_SPOTS - hoodCount);
+          <!-- UPDATED: Court Kickstart -->
+          <label class="relative border-2 border-slate-200 rounded-xl p-5 cursor-pointer hover:border-brand-500 transition-all has-[:checked]:border-brand-600 has-[:checked]:bg-brand-50/50 flex flex-col justify-between">
+            <input type="radio" name="package" value="Court Kickstart" class="sr-only" checked onchange="updatePricing()">
+            <div>
+              <div class="flex justify-between items-start mb-2">
+                <span class="inline-block bg-slate-100 text-slate-700 text-[10px] font-bold px-2 py-1 rounded uppercase">Flexible</span>
+                <span class="text-xl font-extrabold text-brand-600">RM 50</span>
+              </div>
+              <h4 class="font-bold text-slate-900 text-base mb-1">Court Kickstart</h4>
+              <p class="text-xs text-slate-500 leading-relaxed">Flexible attendance. Drop in when you can. (Requires RM30 Reg. Fee for first-timers).</p>
+            </div>
+          </label>
 
-        let statusColor = "bg-brand-500";
-        if(hoodRemaining <= 5) statusColor = "bg-red-500 animate-pulse";
+          <!-- EXISTING: Core Court Membership -->
+          <label class="relative border-2 border-slate-200 rounded-xl p-5 cursor-pointer hover:border-brand-500 transition-all has-[:checked]:border-brand-600 has-[:checked]:bg-brand-50/50 flex flex-col justify-between overflow-hidden">
+            <input type="radio" name="package" value="Core Court Membership" class="sr-only" onchange="updatePricing()">
+            
+            <div class="absolute top-0 right-0">
+               <span class="inline-block bg-gradient-to-r from-amber-400 to-amber-500 text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg shadow-sm uppercase tracking-wider">Best Value</span>
+            </div>
 
-        document.getElementById('hoodSpots').innerHTML = `<span class="w-2 h-2 rounded-full ${statusColor}"></span> ${hoodRemaining} Spots Remaining`;
-      } catch (err) {
-        document.getElementById('hoodSpots').innerHTML = `<span class="w-2 h-2 rounded-full bg-slate-300"></span> 30 Spots Remaining`;
-      }
-    }
-
-    function updatePricing() {
-      // Location is fixed to The Hood
-      const location = "The Hood, KL";
-      const packageType = document.querySelector('input[name="package"]:checked').value;
-
-      const adhocPrice = pricing[location].adhoc;
-      const packagePrice = pricing[location].package;
-
-      selectedTotal = (packageType === 'Court Kickstart') ? adhocPrice : packagePrice;
-      document.getElementById('finalTotalDisplay').innerText = `RM ${selectedTotal}.00`;
-    }
-
-    function handleFormSubmit(event) {
-      event.preventDefault();
-      document.getElementById('modalAmountDisplay').innerText = `RM ${selectedTotal}.00`;
-      document.getElementById('paymentModal').classList.remove('hidden');
-    }
-
-    function closeModal() {
-      document.getElementById('paymentModal').classList.add('hidden');
+            <div class="mt-4">
+              <div class="flex justify-between items-start mb-2 mt-2">
+                <h4 class="font-bold text-slate-900 text-base">Core Court Membership</h4>
+                <span class="text-xl font-extrabold text-brand-600">RM 160</span>
+              </div>
+              <p class="text-xs text-slate-500 leading-relaxed">4 sessions/month. Structured weekly progression. (Requires RM30 Reg. Fee for first-timers).</p>
+            </div>
+          </label>
+        </div>
+      </section>
     }
 // NEW: Gallery scroll function
     function scrollGallery(direction) {
