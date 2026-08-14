@@ -628,7 +628,10 @@
       btn.innerHTML = `<i data-lucide="message-circle" class="w-5 h-5"></i><span>Submit & Confirm via WhatsApp</span>`;
       btn.disabled = false;
       
-      fetchLiveSlots(); // Refresh live slots instantly
+      // CRITICAL FIX: Wait 1.5 seconds for Google to finish writing before fetching the new numbers!
+      setTimeout(() => {
+        fetchLiveSlots(); 
+      }, 1500);
     }
 
     fetchLiveSlots();
@@ -716,4 +719,5 @@
     initTennisBackground();
   </script>
 </body>
+</html>
 </html>
