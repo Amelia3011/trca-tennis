@@ -441,7 +441,7 @@
     // ==========================================
     // PASTE YOUR GOOGLE APPS SCRIPT URL HERE
     // ==========================================
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw9ezONcuwSN2fxqRsbDB18cvAvAXjzOiw7d5O5PVxa1nrnQ8ChyW6nlQd_E8Fs2IC5kw/exec";
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw9ezONcuwSN2fxqRsbDB18cvAvAXjzOiw7d5O5PVxa1nrnQ8ChyW6nlQd_E8Fs2lC5kw/exec"; 
     // ==========================================
 
     // Default total is RM 80 (Kickstart RM 50 + Reg Fee RM 30)
@@ -597,7 +597,9 @@
       // Fetch Live Data from your Google Apps Script
       if (GOOGLE_SCRIPT_URL !== "YOUR_WEB_APP_URL_HERE") {
         try {
-          const response = await fetch(GOOGLE_SCRIPT_URL);
+          // Add a timestamp to the URL to bypass browser caching and force fresh live data!
+          const cacheBusterUrl = GOOGLE_SCRIPT_URL + "?t=" + new Date().getTime();
+          const response = await fetch(cacheBusterUrl);
           liveData = await response.json();
         } catch (e) {
           console.error("Failed to fetch live slots:", e);
@@ -793,5 +795,7 @@
     // Start the background animation
     initTennisBackground();
   </script>
+</body>
+</html>
 </body>
 </html>
