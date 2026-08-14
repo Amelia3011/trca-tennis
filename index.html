@@ -15,17 +15,17 @@
         extend: {
           colors: {
             brand: {
-              50: '#f4efff',  // Softest lilac
-              100: '#E7DDFF', // Your requested soft purple!
-              200: '#d0c3fe', // Muted purple for borders
-              500: '#a78bfa', // Primary soft pastel purple
-              600: '#8b5cf6', // Slightly deeper for hovers
-              700: '#6d28d9', // High contrast purple for text
-              900: '#4c1d95', // Deep purple for headers
+              50: '#f4efff',  
+              100: '#E7DDFF', 
+              200: '#d0c3fe', 
+              500: '#a78bfa', 
+              600: '#8b5cf6', 
+              700: '#6d28d9', 
+              900: '#4c1d95', 
             },
             accent: {
-              100: '#fce7f3', // Soft pastel pink
-              500: '#f472b6', // Muted pink accent
+              100: '#fce7f3', 
+              500: '#f472b6', 
               600: '#db2777',
             }
           },
@@ -39,21 +39,16 @@
 </head>
 <body class="bg-gradient-to-br from-brand-50 to-brand-100 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between">
 
-  <!-- Header -->
   <header class="bg-white/80 backdrop-blur-md border-b border-brand-200 sticky top-0 z-30 shadow-sm">
     <div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
       <div class="flex items-center space-x-3">
-        
-        <!-- Image Logo -->
         <img src="351e8d89-603f-48bd-8164-b748c0cfb079.jpeg" alt="RCA Logo" class="w-10 h-10 rounded-full object-cover shadow-sm border border-brand-200 bg-white" onerror="this.outerHTML='<div class=\'w-10 h-10 rounded-full bg-gradient-to-br from-brand-500 to-accent-600 flex items-center justify-center text-white font-bold text-lg shadow-md\'>RCA</div>'">
-        
         <div>
           <h1 class="font-bold text-slate-900 leading-none">The Royal Court Academy</h1>
           <p class="text-xs text-brand-600 mt-1 font-medium">Junior Tennis Excellence</p>
         </div>
       </div>
       
-      <!-- Desktop Navigation Links -->
       <nav class="hidden md:flex space-x-6 items-center">
         <a href="#about" class="text-sm font-bold text-slate-600 hover:text-brand-600 transition-colors">About Us</a>
         <a href="#gallery" class="text-sm font-bold text-slate-600 hover:text-brand-600 transition-colors">Class Gallery</a>
@@ -65,7 +60,6 @@
       </span>
     </div>
     
-    <!-- Mobile Navigation -->
     <div class="md:hidden border-t border-brand-100 bg-brand-50/50 px-2 py-2.5 flex justify-evenly">
        <a href="#about" class="text-xs font-bold text-slate-700 hover:text-brand-600 flex items-center gap-1"><i data-lucide="info" class="w-3.5 h-3.5"></i> About</a>
        <a href="#gallery" class="text-xs font-bold text-slate-700 hover:text-brand-600 flex items-center gap-1"><i data-lucide="image" class="w-3.5 h-3.5"></i> Gallery</a>
@@ -73,21 +67,17 @@
     </div>
   </header>
 
-  <!-- Main Content -->
   <main class="max-w-4xl mx-auto px-4 py-8 flex-grow w-full relative z-10">
     
-    <!-- Hero Banner -->
     <div class="bg-[#FFEB99] text-slate-900 rounded-3xl p-6 md:p-8 mb-8 shadow-xl relative overflow-hidden border border-amber-200">
       <div class="relative z-10 max-w-xl">
         <span class="text-amber-900 text-xs font-bold uppercase tracking-widest bg-amber-400/40 px-3 py-1.5 rounded-lg backdrop-blur-sm">Enrollment Open</span>
-        
-        <img src="IMG_6160.png" alt="Tennis Kids Program" class="w-full h-auto max-h-72 aspect-video object-cover rounded-2xl mt-4 mb-4 shadow-md">
-
+        <img src="IMG_6160.png" alt="Tennis Kids Program" class="w-full h-auto aspect-video object-cover rounded-2xl mt-4 mb-4 shadow-md">
         <h2 class="text-2xl md:text-3xl font-extrabold mb-2 leading-tight">Start Your Child's Tennis Journey</h2>
         <p class="text-slate-700 text-sm md:text-base font-medium">Pick your training pass and confirm your child's spot at our premium indoor facility.</p>
       </div>
       
-      <!-- SVG Racket replacing Sparkles -->
+      <!-- Custom SVG Racket replacing Sparkles -->
       <div class="absolute -right-10 -bottom-10 text-amber-500 pointer-events-none opacity-20 transform -rotate-12">
         <svg class="w-64 h-64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
           <!-- Racket Head -->
@@ -107,7 +97,6 @@
           <line x1="10.5" y1="13.5" x2="4.5" y2="19.5" stroke-width="1.5" />
           <!-- Racket Grip -->
           <line x1="7.5" y1="16.5" x2="3.5" y2="20.5" stroke-width="2.5" />
-          
           <!-- Tennis Ball -->
           <circle cx="5" cy="6" r="2.5" stroke-width="1.2" />
           <path d="M 3.5 4.5 A 1.5 1.5 0 0 1 4.5 8 M 6.5 4.5 A 1.5 1.5 0 0 0 5.5 8" stroke-width="0.6" />
@@ -115,12 +104,9 @@
       </div>
     </div>
 
-    <!-- About Us Section (Fully Restored) -->
     <section id="about" class="mb-10 scroll-mt-24">
       <div class="bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-brand-200 relative overflow-hidden">
-        <!-- Background decoration -->
         <div class="absolute top-0 right-0 w-32 h-32 bg-brand-50 rounded-bl-full -z-10 opacity-70"></div>
-        
         <div class="flex items-center space-x-3 mb-4">
           <div class="w-8 h-8 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center shadow-sm border border-brand-200">
             <i data-lucide="info" class="w-4 h-4"></i>
@@ -155,7 +141,6 @@
       </div>
     </section>
 
-    <!-- Class Gallery Section -->
     <section id="gallery" class="mb-10 scroll-mt-24">
       <div class="flex items-center justify-between mb-5 pl-2 pr-2">
         <div class="flex items-center space-x-3">
@@ -165,7 +150,6 @@
           <h3 class="text-xl font-bold text-slate-900">Class Gallery</h3>
         </div>
         
-        <!-- Navigation Buttons -->
         <div class="flex space-x-2">
           <button type="button" onclick="scrollGallery('left')" class="w-8 h-8 rounded-full bg-white border border-brand-200 text-brand-600 flex items-center justify-center shadow-sm hover:bg-brand-50 transition-colors focus:outline-none">
             <i data-lucide="chevron-left" class="w-4 h-4"></i>
@@ -176,43 +160,40 @@
         </div>
       </div>
       
-      <!-- Photo Carousel -->
       <style>
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
       </style>
       <div id="galleryCarousel" class="flex gap-3 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-2 no-scrollbar">
         <div class="snap-start flex-none w-[calc(50%-0.375rem)] md:w-[calc(25%-0.5625rem)] aspect-square bg-white rounded-2xl overflow-hidden border border-brand-200 shadow-sm relative group">
-          <img src="e970cc5c-5521-42bb-930d-02e41a8b7560.jpeg" alt="Gallery Photo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+          <img src="e970cc5c-5521-42bb-930d-02e41a8b7560.jpeg" alt="Gallery Photo 1" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
         </div>
         <div class="snap-start flex-none w-[calc(50%-0.375rem)] md:w-[calc(25%-0.5625rem)] aspect-square bg-white rounded-2xl overflow-hidden border border-brand-200 shadow-sm relative group">
-          <img src="d3efb658-0d09-40cf-992a-4743064e01db.jpeg" alt="Gallery Photo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+          <img src="d3efb658-0d09-40cf-992a-4743064e01db.jpeg" alt="Gallery Photo 2" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
         </div>
         <div class="snap-start flex-none w-[calc(50%-0.375rem)] md:w-[calc(25%-0.5625rem)] aspect-square bg-white rounded-2xl overflow-hidden border border-brand-200 shadow-sm relative group">
-          <img src="ab7cb932-9b92-4ccf-bdf6-21df5235d89a.jpeg" alt="Gallery Photo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+          <img src="ab7cb932-9b92-4ccf-bdf6-21df5235d89a.jpeg" alt="Gallery Photo 3" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
         </div>
         <div class="snap-start flex-none w-[calc(50%-0.375rem)] md:w-[calc(25%-0.5625rem)] aspect-square bg-white rounded-2xl overflow-hidden border border-brand-200 shadow-sm relative group">
-          <img src="grdr 2026-08-09 17012606F42F8EDD84.jpeg" alt="Gallery Photo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+          <img src="grdr 2026-08-09 17012606F42F8EDD84.jpeg" alt="Gallery Photo 4" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
         </div>
         <div class="snap-start flex-none w-[calc(50%-0.375rem)] md:w-[calc(25%-0.5625rem)] aspect-square bg-white rounded-2xl overflow-hidden border border-brand-200 shadow-sm relative group">
-          <img src="grdr 2026-08-09 17022237C175369223.jpeg" alt="Gallery Photo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+          <img src="grdr 2026-08-09 17022237C175369223.jpeg" alt="Gallery Photo 5" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
         </div>
         <div class="snap-start flex-none w-[calc(50%-0.375rem)] md:w-[calc(25%-0.5625rem)] aspect-square bg-white rounded-2xl overflow-hidden border border-brand-200 shadow-sm relative group">
-          <img src="7474ce0d-c116-468c-bf74-7941cf22c0e3.jpeg" alt="Gallery Photo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+          <img src="7474ce0d-c116-468c-bf74-7941cf22c0e3.jpeg" alt="Gallery Photo 6" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
         </div>
         <div class="snap-start flex-none w-[calc(50%-0.375rem)] md:w-[calc(25%-0.5625rem)] aspect-square bg-white rounded-2xl overflow-hidden border border-brand-200 shadow-sm relative group">
-          <img src="09b4e402-64d6-4c19-8cd4-789e240ca396.jpeg" alt="Gallery Photo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+          <img src="09b4e402-64d6-4c19-8cd4-789e240ca396.jpeg" alt="Gallery Photo 7" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
         </div>
         <div class="snap-start flex-none w-[calc(50%-0.375rem)] md:w-[calc(25%-0.5625rem)] aspect-square bg-white rounded-2xl overflow-hidden border border-brand-200 shadow-sm relative group">
-          <img src="c0bfbf77-2f0d-44b4-b0f1-59d798d6d873.jpeg" alt="Gallery Photo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+          <img src="c0bfbf77-2f0d-44b4-b0f1-59d798d6d873.jpeg" alt="Gallery Photo 8" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
         </div>
       </div>
     </section>
 
-    <!-- Booking Form Starts Here -->
     <form id="bookingForm" onsubmit="handleFormSubmit(event)" class="space-y-8">
 
-      <!-- Registration Fee Checkbox -->
       <div id="regFeeContainer" class="bg-gradient-to-r from-brand-100 to-accent-50 rounded-2xl p-5 border border-brand-200 flex items-center justify-between transition-opacity duration-300">
         <div class="flex items-center gap-3">
           <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-accent-600 shadow-sm">
@@ -229,7 +210,6 @@
         </label>
       </div>
 
-      <!-- Step 2: Package -->
       <section class="bg-white rounded-2xl p-6 shadow-sm border border-brand-200">
         <div class="flex items-center space-x-3 mb-4">
           <div class="w-7 h-7 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center font-bold text-sm">2</div>
@@ -237,8 +217,6 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          
-          <!-- Casual Drop-in (Adhoc) -->
           <label class="relative border-2 border-slate-200 rounded-xl p-5 cursor-pointer hover:border-brand-500 transition-all has-[:checked]:border-brand-600 has-[:checked]:bg-brand-50/50 flex flex-col justify-between">
             <input type="radio" name="package" value="Casual Drop-in (Adhoc)" class="sr-only" onchange="updatePricing()">
             <div>
@@ -251,7 +229,6 @@
             </div>
           </label>
 
-          <!-- Court Kickstart -->
           <label class="relative border-2 border-slate-200 rounded-xl p-5 cursor-pointer hover:border-brand-500 transition-all has-[:checked]:border-brand-600 has-[:checked]:bg-brand-50/50 flex flex-col justify-between">
             <input type="radio" name="package" value="Court Kickstart" class="sr-only" checked onchange="updatePricing()">
             <div>
@@ -264,16 +241,13 @@
             </div>
           </label>
 
-          <!-- Core Court Membership -->
           <label class="relative border-2 border-slate-200 rounded-xl p-5 cursor-pointer hover:border-brand-500 transition-all has-[:checked]:border-brand-600 has-[:checked]:bg-brand-50/50 flex flex-col justify-between overflow-hidden">
             <input type="radio" name="package" value="Core Court Membership" class="sr-only" onchange="updatePricing()">
-            
             <div class="absolute top-0 right-0">
                <span class="inline-block bg-gradient-to-r from-amber-400 to-amber-500 text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg shadow-sm uppercase tracking-wider">Best Value</span>
             </div>
-
             <div>
-              <div class="flex justify-between items-start mb-2">
+              <div class="flex justify-between items-start mb-2 mt-2">
                 <span class="inline-block bg-slate-100 text-slate-700 text-[10px] font-bold px-2 py-1 rounded uppercase">Monthly</span>
                 <span class="text-xl font-extrabold text-brand-600 mt-1 relative z-10">RM 160</span>
               </div>
@@ -284,7 +258,6 @@
         </div>
       </section>
 
-      <!-- Step 2.5: Select Class Slot (Auto-updates) -->
       <section class="bg-white rounded-2xl p-6 shadow-sm border border-brand-200 relative">
         <div class="flex items-center justify-between mb-4">
           <div class="flex items-center space-x-3">
@@ -299,19 +272,14 @@
         
         <div class="pl-2">
           <label class="block text-xs font-bold text-slate-700 uppercase mb-3">Available Weekends (<span id="currentMonthLabel" class="text-brand-600">Loading...</span>)</label>
-          
-          <!-- Dynamic Calendar Grid -->
           <div id="calendarGrid" class="grid grid-cols-2 md:grid-cols-4 gap-3">
-            <!-- Cards will be injected here by Javascript -->
+            <!-- Cards populated by Javascript -->
           </div>
-          
-          <!-- Hidden input to store the selected value for the form submission -->
           <input type="hidden" id="classSlot" required>
           <p id="slotError" class="text-xs text-red-500 font-bold hidden mt-3 bg-red-50 p-2 rounded-lg border border-red-100 flex items-center gap-1.5"><i data-lucide="alert-circle" class="w-4 h-4"></i> Please select a class slot to continue.</p>
         </div>
       </section>
 
-      <!-- Step 3: Details -->
       <section class="bg-white rounded-3xl p-6 shadow-sm border border-brand-100 relative overflow-hidden">
         <div class="absolute top-0 left-0 w-2 h-full bg-brand-500"></div>
         <div class="flex items-center space-x-3 mb-4 pl-2">
@@ -350,7 +318,6 @@
         </div>
       </section>
 
-      <!-- Submit Action Bar -->
       <div class="bg-white p-5 rounded-3xl border border-brand-200 shadow-xl flex flex-col md:flex-row items-center justify-between gap-4 sticky bottom-4 z-20">
         <div class="flex items-center gap-4">
           <div class="w-12 h-12 rounded-full bg-brand-50 flex items-center justify-center text-brand-600">
@@ -366,17 +333,14 @@
           <i data-lucide="arrow-right" class="w-5 h-5"></i>
         </button>
       </div>
-
     </form>
   </main>
 
-  <!-- Footer with Social Links -->
   <footer class="bg-white/90 backdrop-blur-md border-t border-brand-200 py-8 relative z-20 mt-8">
     <div class="max-w-4xl mx-auto px-4 flex flex-col items-center justify-center space-y-5">
       <h4 class="text-sm font-bold text-slate-800 uppercase tracking-widest">Follow Our Journey</h4>
       
       <div class="flex space-x-4">
-        <!-- Instagram Button -->
         <a href="https://instagram.com/theroyalcourtacademy" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full bg-brand-50 border border-brand-200 text-brand-600 flex items-center justify-center hover:bg-gradient-to-tr hover:from-purple-600 hover:to-pink-500 hover:text-white hover:border-transparent transition-all duration-300 shadow-sm hover:shadow-md transform hover:-translate-y-1">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
             <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
@@ -385,7 +349,6 @@
           </svg>
         </a>
 
-        <!-- TikTok Button -->
         <a href="https://tiktok.com/@theroyalcourtacademy" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full bg-brand-50 border border-brand-200 text-brand-600 flex items-center justify-center hover:bg-black hover:text-white hover:border-black transition-all duration-300 shadow-sm hover:shadow-md transform hover:-translate-y-1">
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
@@ -397,7 +360,6 @@
     </div>
   </footer>
 
-  <!-- Payment Modal -->
   <div id="paymentModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
     <div class="bg-white rounded-3xl max-w-md w-full p-8 shadow-2xl space-y-6 relative animate-in fade-in zoom-in duration-200 border border-brand-100">
       
@@ -424,7 +386,7 @@
       </div>
 
       <div class="space-y-3 pt-2">
-        <button onclick="sendToWhatsApp()" class="w-full bg-[#25D366] hover:bg-[#1ebd5a] text-white font-bold py-4 rounded-2xl shadow-lg shadow-[#25D366]/30 transition-all transform hover:-translate-y-0.5 flex items-center justify-center space-x-2">
+        <button onclick="sendToWhatsApp()" id="confirmBtn" class="w-full bg-[#25D366] hover:bg-[#1ebd5a] text-white font-bold py-4 rounded-2xl shadow-lg shadow-[#25D366]/30 transition-all transform hover:-translate-y-0.5 flex items-center justify-center space-x-2">
           <i data-lucide="message-circle" class="w-5 h-5"></i>
           <span>Submit & Confirm via WhatsApp</span>
         </button>
@@ -434,33 +396,25 @@
     </div>
   </div>
 
-  <!-- ALL JAVASCRIPT LOGIC -->
   <script>
     lucide.createIcons();
 
-    // ==========================================
-    // PASTE YOUR GOOGLE APPS SCRIPT URL HERE
-    // ==========================================
+    // YOUR EXACT GOOGLE SCRIPT URL IS HARDCODED HERE
     const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw9ezONcuwSN2fxqRsbDB18cvAvAXjzOiw7d5O5PVxa1nrnQ8ChyW6nlQd_E8Fs2lC5kw/exec"; 
-    // ==========================================
+    const COACH_WHATSAPP = "601112985037"; // Your correct phone number
 
-    // Default total is RM 80 (Kickstart RM 50 + Reg Fee RM 30)
     let selectedTotal = 80;
 
-    // PRICING CALCULATOR LOGIC
     function updatePricing() {
       const packageType = document.querySelector('input[name="package"]:checked').value;
       const isNewStudent = document.getElementById('newStudentCheck').checked;
       const regContainer = document.getElementById('regFeeContainer');
 
       let basePrice = 0;
-      
-      // Base Price Logic
       if (packageType === 'Casual Drop-in (Adhoc)') basePrice = 60;
       else if (packageType === 'Court Kickstart') basePrice = 50;
       else if (packageType === 'Core Court Membership') basePrice = 160;
 
-      // Registration Fee Logic
       let registrationFee = 0;
       if (packageType === 'Casual Drop-in (Adhoc)') {
         regContainer.classList.add('opacity-40', 'pointer-events-none');
@@ -474,23 +428,16 @@
 
       selectedTotal = basePrice + registrationFee;
       document.getElementById('finalTotalDisplay').innerText = `RM ${selectedTotal}.00`;
-      
-      // Update Modal amount as well just in case
       document.getElementById('modalAmountDisplay').innerText = `RM ${selectedTotal}.00`;
     }
 
-    // FORM HANDLING
     function handleFormSubmit(event) {
       event.preventDefault();
-      
-      // Check if a calendar slot was selected
       if (!document.getElementById('classSlot').value) {
         document.getElementById('slotError').classList.remove('hidden');
-        return; // Stop form submission
+        return; 
       }
       document.getElementById('slotError').classList.add('hidden');
-
-      document.getElementById('modalAmountDisplay').innerText = `RM ${selectedTotal}.00`;
       document.getElementById('paymentModal').classList.remove('hidden');
     }
 
@@ -498,34 +445,22 @@
       document.getElementById('paymentModal').classList.add('hidden');
     }
 
-    // GALLERY SCROLLING
     function scrollGallery(direction) {
       const carousel = document.getElementById('galleryCarousel');
       const scrollAmount = carousel.clientWidth;
-      
-      if (direction === 'left') {
-        carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-      } else {
-        carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-      }
+      if (direction === 'left') carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      else carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     }
     
-    // Automatic Weekend Generator & Slot Selection
     function selectSlot(element, slotId, isFull) {
       if (isFull) return;
-
-      // Reset all styles
       const cards = document.querySelectorAll('.slot-card');
       cards.forEach(card => {
         card.classList.remove('border-brand-600', 'bg-brand-50', 'ring-2', 'ring-brand-500');
         card.classList.add('border-slate-200', 'bg-white');
       });
-
-      // Highlight selected card
       element.classList.remove('border-slate-200', 'bg-white');
       element.classList.add('border-brand-600', 'bg-brand-50', 'ring-2', 'ring-brand-500');
-
-      // Save value and hide error
       document.getElementById('classSlot').value = slotId;
       document.getElementById('slotError').classList.add('hidden');
     }
@@ -535,12 +470,9 @@
       const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
       const slots = [];
       const today = new Date();
-      
       let targetMonth = today.getMonth();
       let targetYear = today.getFullYear();
 
-      // Check if there are any weekends left THIS month. 
-      // If we are past the last weekend, auto-forward to next month!
       let hasRemainingWeekends = false;
       let tempD = new Date(targetYear, targetMonth, today.getDate());
       while(tempD.getMonth() === targetMonth) {
@@ -556,24 +488,22 @@
           if (targetMonth > 11) { targetMonth = 0; targetYear++; }
       }
 
-      // Update the UI label to show the active month
       document.getElementById('currentMonthLabel').innerText = `${monthNames[targetMonth]} ${targetYear}`;
 
-      // Generate the weekend dates
       let iterDate = new Date(targetYear, targetMonth, 1);
       if (targetMonth === today.getMonth() && targetYear === today.getFullYear()) {
-          iterDate = new Date(targetYear, targetMonth, today.getDate()); // Start from today
+          iterDate = new Date(targetYear, targetMonth, today.getDate()); 
       }
 
       while (iterDate.getMonth() === targetMonth) {
           const dayOfWeek = iterDate.getDay();
-          if (dayOfWeek === 6) { // Saturday
+          if (dayOfWeek === 6) { 
               slots.push({
                   id: `${dayNames[6]}, ${iterDate.getDate()} ${monthNames[targetMonth]} (8-10am)`,
                   day: `${dayNames[6]}, ${iterDate.getDate()} ${monthNames[targetMonth]}`,
                   time: "8:00 AM - 10:00 AM"
               });
-          } else if (dayOfWeek === 0) { // Sunday
+          } else if (dayOfWeek === 0) { 
               slots.push({
                   id: `${dayNames[0]}, ${iterDate.getDate()} ${monthNames[targetMonth]} (4-6pm)`,
                   day: `${dayNames[0]}, ${iterDate.getDate()} ${monthNames[targetMonth]}`,
@@ -585,25 +515,19 @@
       return slots;
     }
 
-    // Connects to Google Sheets to get LIVE slot capacities
     async function fetchLiveSlots() {
       const grid = document.getElementById('calendarGrid');
       const spinner = document.getElementById('slotLoadingSpinner');
-      
       const dynamicSlots = generateDynamicWeekends();
-      
       let liveData = [];
       
-      // Fetch Live Data from your Google Apps Script
-      if (GOOGLE_SCRIPT_URL !== "YOUR_WEB_APP_URL_HERE") {
-        try {
-          // Add a timestamp to the URL to bypass browser caching and force fresh live data!
-          const cacheBusterUrl = GOOGLE_SCRIPT_URL + "?t=" + new Date().getTime();
-          const response = await fetch(cacheBusterUrl);
-          liveData = await response.json();
-        } catch (e) {
-          console.error("Failed to fetch live slots:", e);
-        }
+      try {
+        // Cache Buster: Adds a unique timestamp to force mobile phones to grab fresh data!
+        const cacheBusterUrl = GOOGLE_SCRIPT_URL + "?t=" + new Date().getTime();
+        const response = await fetch(cacheBusterUrl);
+        liveData = await response.json();
+      } catch (e) {
+        console.error("Live fetch error:", e);
       }
 
       spinner.style.display = 'none';
@@ -615,17 +539,14 @@
       }
 
       dynamicSlots.forEach(slot => {
-        let remaining = 8; // Default capacity
-        
-        // Match the slot ID with the live data from Google Sheets
-        const backendMatch = liveData.find(s => s.slot === slot.id);
-        if (backendMatch) {
-            remaining = backendMatch.remaining;
+        let remaining = 8; 
+        if (Array.isArray(liveData)) {
+            const backendMatch = liveData.find(s => s.slot === slot.id);
+            if (backendMatch) remaining = backendMatch.remaining;
         }
 
         const isFull = remaining <= 0;
         const card = document.createElement('div');
-        
         card.className = `slot-card border-2 rounded-xl p-3.5 transition-all select-none ${isFull ? 'bg-slate-50 border-slate-200 opacity-60 cursor-not-allowed relative overflow-hidden grayscale' : 'bg-white border-slate-200 hover:border-brand-400 cursor-pointer shadow-sm hover:shadow-md'}`;
         
         if (!isFull) {
@@ -646,39 +567,39 @@
     }
 
     async function sendToWhatsApp() {
+      const btn = document.getElementById('confirmBtn');
+      btn.innerHTML = `<i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i><span>Saving...</span>`;
+      btn.disabled = true;
+
       const location = "The Hood, KL";
       const packageType = document.querySelector('input[name="package"]:checked').value;
-      const classSlot = document.getElementById('classSlot').value; // Get selected slot
+      const classSlot = document.getElementById('classSlot').value;
       const parentName = document.getElementById('parentName').value;
       const parentPhone = document.getElementById('parentPhone').value;
       const childName = document.getElementById('childName').value;
       const childAge = document.getElementById('childAge').value;
       const isNewStudent = document.getElementById('newStudentCheck').checked;
 
-      // Update to Google Sheets!
-      if (GOOGLE_SCRIPT_URL !== "YOUR_WEB_APP_URL_HERE") {
-        try {
-          // Tell the browser to WAIT for the data to send before continuing
-          await fetch(GOOGLE_SCRIPT_URL, {
-            method: 'POST',
-            redirect: 'follow', // Fixed for iOS/Apple devices
-            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-            body: JSON.stringify({
-              ParentName: parentName,
-              ParentPhone: parentPhone,
-              ChildName: childName,
-              ChildAge: childAge,
-              Package: packageType + (isNewStudent && packageType !== 'Casual Drop-in (Adhoc)' ? ' (+Reg Fee)' : ''),
-              Slot: classSlot,
-              Amount: `RM ${selectedTotal}`
-            })
-          });
-        } catch (e) {
-          console.error("Sheets save error:", e);
-        }
+      try {
+        // We await the fetch so we know Google received it before redirecting!
+        await fetch(GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          redirect: 'follow', // Fixed for Apple devices
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' }, // Bypasses CORS blocks
+          body: JSON.stringify({
+            ParentName: parentName,
+            ParentPhone: parentPhone,
+            ChildName: childName,
+            ChildAge: childAge,
+            Package: packageType + (isNewStudent && packageType !== 'Casual Drop-in (Adhoc)' ? ' (+Reg Fee)' : ''),
+            Slot: classSlot,
+            Amount: `RM ${selectedTotal}`
+          })
+        });
+      } catch (e) {
+        console.error("Sheets save error:", e);
       }
 
-      // WhatsApp Redirect
       const message = `*🎾 NEW KIDS TENNIS REGISTRATION*%0A%0A` +
         `*Parent:* ${parentName}%0A` +
         `*Phone:* ${parentPhone}%0A` +
@@ -689,25 +610,23 @@
         `*Total Amount:* RM ${selectedTotal}%0A%0A` +
         `_I have completed the QR payment and wish to confirm my spot._`;
 
-      window.open(`https://wa.me/601112985037?text=${message}`, '_blank');
+      window.open(`https://wa.me/${COACH_WHATSAPP}?text=${message}`, '_blank');
       
-      // Close modal after opening WhatsApp
       closeModal();
       document.getElementById('bookingForm').reset();
       updatePricing();
       
-      // Refresh slots in case they just took the last one!
-      fetchLiveSlots();
+      btn.innerHTML = `<i data-lucide="message-circle" class="w-5 h-5"></i><span>Submit & Confirm via WhatsApp</span>`;
+      btn.disabled = false;
+      
+      fetchLiveSlots(); // Refresh live slots instantly
     }
 
-    // Initialize counts on page load
     fetchLiveSlots();
 
-    // --- TENNIS BALL BACKGROUND ANIMATION ---
     const initTennisBackground = () => {
       const canvas = document.createElement('canvas');
       canvas.id = 'tennis-background';
-      // Fixed positioning, takes up full screen, ignores pointer events, sits behind content
       canvas.className = 'fixed inset-0 w-full h-full pointer-events-none z-[0] opacity-50';
       document.body.prepend(canvas);
       
@@ -722,17 +641,17 @@
       resize();
 
       const balls = [];
-      const numBalls = 15; // Number of balls falling
+      const numBalls = 15; 
 
       for (let i = 0; i < numBalls; i++) {
         balls.push({
           x: Math.random() * width,
           y: Math.random() * height,
-          size: Math.random() * 12 + 12, // Radius size
-          speedY: Math.random() * 1.2 + 0.5, // Fall speed
-          speedX: (Math.random() - 0.5) * 0.5, // Slight horizontal drift
-          rot: Math.random() * Math.PI * 2, // Current rotation
-          rotSpeed: (Math.random() - 0.5) * 0.03 // Rotation speed
+          size: Math.random() * 12 + 12, 
+          speedY: Math.random() * 1.2 + 0.5, 
+          speedX: (Math.random() - 0.5) * 0.5, 
+          rot: Math.random() * Math.PI * 2, 
+          rotSpeed: (Math.random() - 0.5) * 0.03 
         });
       }
 
@@ -741,25 +660,20 @@
         ctx.translate(ball.x, ball.y);
         ctx.rotate(ball.rot);
 
-        // 1. Draw the yellow-green base
         ctx.beginPath();
         ctx.arc(0, 0, ball.size, 0, Math.PI * 2);
         ctx.fillStyle = '#C6F62D'; 
         ctx.fill();
         
-        // 2. Draw the outer white border
         ctx.lineWidth = ball.size * 0.12;
         ctx.strokeStyle = '#ffffff';
         ctx.stroke();
 
-        // 3. Draw the classic tennis ball white curved lines
         ctx.beginPath();
-        // Left curve
         ctx.arc(-ball.size * 0.7, 0, ball.size * 0.6, -Math.PI / 2, Math.PI / 2);
         ctx.stroke();
 
         ctx.beginPath();
-        // Right curve (facing away)
         ctx.arc(ball.size * 0.7, 0, ball.size * 0.6, Math.PI / 2, Math.PI * 1.5);
         ctx.stroke();
 
@@ -774,12 +688,10 @@
           ball.x += ball.speedX;
           ball.rot += ball.rotSpeed;
 
-          // Wrap around to top when it falls off the bottom edge
           if (ball.y - ball.size > height) {
             ball.y = -ball.size;
             ball.x = Math.random() * width;
           }
-          // Horizontal screen wrapping
           if (ball.x - ball.size > width) ball.x = -ball.size;
           if (ball.x + ball.size < 0) ball.x = width + ball.size;
 
@@ -792,10 +704,7 @@
       animate();
     };
 
-    // Start the background animation
     initTennisBackground();
   </script>
-</body>
-</html>
 </body>
 </html>
