@@ -467,7 +467,7 @@
       const canvas = document.createElement('canvas');
       canvas.id = 'tennis-background';
       // Fixed positioning, takes up full screen, ignores pointer events, sits behind content
-      canvas.className = 'fixed inset-0 w-full h-full pointer-events-none z-[0] opacity-20';
+      canvas.className = 'fixed inset-0 w-full h-full pointer-events-none z-[0] opacity-50';
       document.body.prepend(canvas);
       
       const ctx = canvas.getContext('2d');
@@ -513,11 +513,13 @@
 
         // 3. Draw the classic tennis ball white curved lines
         ctx.beginPath();
-        ctx.arc(-ball.size * 0.6, 0, ball.size * 0.7, -Math.PI / 2.5, Math.PI / 2.5);
+        // Left curve
+        ctx.arc(-ball.size * 0.7, 0, ball.size * 0.6, -Math.PI / 2, Math.PI / 2);
         ctx.stroke();
 
         ctx.beginPath();
-        ctx.arc(ball.size * 0.6, 0, ball.size * 0.7, Math.PI - Math.PI / 2.5, Math.PI + Math.PI / 2.5);
+        // Right curve (facing away)
+        ctx.arc(ball.size * 0.7, 0, ball.size * 0.6, Math.PI / 2, Math.PI * 1.5);
         ctx.stroke();
 
         ctx.restore();
