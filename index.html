@@ -1,4 +1,5 @@
 
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -154,41 +155,41 @@
         <div class="aspect-square bg-white rounded-2xl overflow-hidden border border-brand-200 shadow-sm relative group">
           <img src="https://placehold.co/400x400/E7DDFF/6d28d9?text=Photo+3" alt="Class Photo 3" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
         </div>
-        <!-- Photo 4 -->
-        <div class="aspect-square bg-white rounded-2xl overflow-hidden border border-brand-200 shadow-sm relative group">
-          <img src="https://placehold.co/400x400/E7DDFF/6d28d9?text=Photo+4" alt="Class Photo 4" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+      <!-- Step 2: Package -->
+      <section class="bg-white rounded-2xl p-6 shadow-sm border border-brand-200">
+        <div class="flex items-center space-x-3 mb-4">
+          <div class="w-7 h-7 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center font-bold text-sm">2</div>
+          <h3 class="text-lg font-bold text-slate-900">Choose Class Format</h3>
         </div>
-      </div>
-      <p class="text-xs text-brand-600/70 mt-3 text-center font-medium italic">Happy faces from our previous sessions!</p>
-    </section>
 
-    <!-- Form Section starts here -->
-    <form id="bookingForm" onsubmit="handleFormSubmit(event)" class="space-y-6 scroll-mt-24">
-          <label class="relative border-2 border-slate-200 rounded-2xl p-5 cursor-pointer hover:border-accent-300 transition-all has-[:checked]:border-accent-500 has-[:checked]:bg-accent-50/50 has-[:checked]:shadow-md">
+        <div class="grid md:grid-cols-2 gap-4">
+          <label class="relative border-2 border-slate-200 rounded-xl p-5 cursor-pointer hover:border-brand-500 transition-all has-[:checked]:border-brand-600 has-[:checked]:bg-brand-50/50 flex flex-col justify-between">
             <input type="radio" name="package" value="Court Kickstart" class="sr-only" checked onchange="updatePricing()">
-            <div class="flex justify-between items-start">
-              <div>
-                <span class="inline-block bg-slate-100 text-slate-600 text-[10px] font-bold px-2 py-0.5 rounded uppercase mb-2">Single Session</span>
-                <h4 class="font-bold text-slate-900 text-base">Court Kickstart</h4>
+            <div>
+              <div class="flex justify-between items-start mb-2">
+                <span class="inline-block bg-slate-100 text-slate-700 text-[10px] font-bold px-2 py-1 rounded uppercase">Single Session</span>
+                <span id="adhocPriceDisplay" class="text-xl font-extrabold text-brand-600">RM 50</span>
               </div>
-              <span id="adhocPriceDisplay" class="text-xl font-black text-accent-600">RM 50</span>
+              <h4 class="font-bold text-slate-900 text-base mb-1">Court Kickstart</h4>
+              <p class="text-xs text-slate-500 leading-relaxed">1-hour drop-in class. Perfect for beginners testing out tennis without upfront commitment.</p>
             </div>
-            <p class="text-xs text-slate-500 mt-2 leading-relaxed">1-hour drop-in class. Perfect for beginners testing out tennis without an upfront commitment.</p>
           </label>
 
-          <!-- Package -->
-          <label class="relative border-2 border-slate-200 rounded-2xl p-5 cursor-pointer hover:border-brand-300 transition-all has-[:checked]:border-brand-500 has-[:checked]:bg-brand-50/50 has-[:checked]:shadow-md">
+          <label class="relative border-2 border-slate-200 rounded-xl p-5 cursor-pointer hover:border-brand-500 transition-all has-[:checked]:border-brand-600 has-[:checked]:bg-brand-50/50 flex flex-col justify-between overflow-hidden">
             <input type="radio" name="package" value="Core Court Membership" class="sr-only" onchange="updatePricing()">
-            <div class="absolute -top-3 -right-2">
-              <span class="bg-gradient-to-r from-amber-400 to-amber-500 text-white text-[10px] font-black px-3 py-1 rounded-full shadow-md border border-amber-300 uppercase tracking-wide">Best Value (Save RM 40)</span>
+            
+            <!-- Adjust absolute tag positioning -->
+            <div class="absolute top-0 right-0">
+               <span class="inline-block bg-gradient-to-r from-amber-400 to-amber-500 text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg shadow-sm uppercase tracking-wider">Best Value (Save RM 40)</span>
             </div>
-            <div class="flex justify-between items-start">
-              <div>
-                <h4 class="font-bold text-slate-900 text-base mt-2">Core Court Membership</h4>
+
+            <div class="mt-4">
+              <div class="flex justify-between items-start mb-2 mt-2">
+                <h4 class="font-bold text-slate-900 text-base">Core Court Membership</h4>
+                <span id="packagePriceDisplay" class="text-xl font-extrabold text-brand-600">RM 160</span>
               </div>
-              <span id="packagePriceDisplay" class="text-xl font-black text-brand-600 mt-2">RM 160</span>
+              <p class="text-xs text-slate-500 leading-relaxed">4 sessions per month (1 hr/week). Structured weekly skill development and progression.</p>
             </div>
-            <p class="text-xs text-slate-500 mt-2 leading-relaxed">4 sessions per month (1 hr/week). Structured weekly skill development and steady progression.</p>
           </label>
         </div>
       </section>
