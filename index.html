@@ -595,7 +595,7 @@
       let liveData = [];
       
       // Fetch Live Data from your Google Apps Script
-      if (GOOGLE_SCRIPT_URL !== "https://script.google.com/macros/library/d/12G0Go1bohbA0CqyNqMP2SyvRhu-XhFS9ssblEUoFXW5GzEMd_AkYd=Ckv-/2") {
+      if (GOOGLE_SCRIPT_URL !== "YOUR_WEB_APP_URL_HERE") {
         try {
           const response = await fetch(GOOGLE_SCRIPT_URL);
           liveData = await response.json();
@@ -656,10 +656,12 @@
       // Update to Google Sheets!
       if (GOOGLE_SCRIPT_URL !== "YOUR_WEB_APP_URL_HERE") {
         try {
-          // Send request as plain text string to bypass complicated CORS preflight issues
-          fetch(GOOGLE_SCRIPT_URL, {
+          // Tell the browser to WAIT for the data to send before continuing
+          await fetch(GOOGLE_SCRIPT_URL, {
             method: 'POST',
-            mode: 'no-cors', // Guarantees browsers won't block the background request
+            headers: {
+              'Content-Type': 'text/plain;charset=utf-8',
+            },
             body: JSON.stringify({
               ParentName: parentName,
               ParentPhone: parentPhone,
