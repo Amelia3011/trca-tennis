@@ -86,7 +86,7 @@
 
         <h2 class="text-2xl md:text-3xl font-extrabold mb-2 leading-tight">Start Your Child's Tennis Journey</h2>
         <p class="text-slate-700 text-sm md:text-base font-medium">Pick your training pass and confirm your child's spot at our premium indoor facility.</p>
-     </div>
+      </div>
       <div class="absolute -right-10 -bottom-10 text-amber-500 pointer-events-none opacity-20 transform -rotate-12">
         <svg class="w-64 h-64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
           <!-- Racket Head -->
@@ -114,29 +114,7 @@
       </div>
     </div>
 
-    <!-- About Us Section -->
-    <section id="about" class="mb-10 scroll-mt-24">
-      <div class="bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-brand-200 relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-32 h-32 bg-brand-50 rounded-bl-full -z-10 opacity-70"></div>
-        
-        <div class="flex items-center space-x-3 mb-4">
-          <div class="w-8 h-8 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center shadow-sm border border-brand-200">
-            <i data-lucide="info" class="w-4 h-4"></i>
-          </div>
-          <h3 class="text-xl font-bold text-slate-900">About Our Academy</h3>
-        </div>
-        
-        <p class="text-slate-600 text-sm md:text-base leading-relaxed mb-8 font-medium">
-          At The Royal Court Academy, we believe in nurturing the next generation of tennis champions in a fun, supportive, and highly engaging environment. Our tailored kids' programs focus on building core motor skills, tennis fundamentals, and sportsmanship that lasts a lifetime.
-        </p>
-        
-        <div class="grid grid-cols-3 gap-4">
-          <div class="flex flex-col items-center text-center">
-            <div class="w-12 h-12 rounded-full bg-accent-100 text-accent-600 flex items-center justify-center mb-2 shadow-sm border border-accent-200">
-              <i data-lucide="heart" class="w-6 h-6"></i>
-            </div>
-            <span class="text-xs font-bold text-slate-700">Fun First</span>
-          </div>
+    <!-- NEW: About Us Section -->
           <div class="flex flex-col items-center text-center">
             <div class="w-12 h-12 rounded-full bg-[#FFEB99] text-amber-700 flex items-center justify-center mb-2 shadow-sm border border-amber-200">
               <i data-lucide="award" class="w-6 h-6"></i>
@@ -218,7 +196,7 @@
           </div>
           <div>
             <h4 class="text-sm font-bold text-slate-900">First-Time Registration? (+RM 30)</h4>
-            <p class="text-xs text-slate-600 font-medium">Includes a FREE exclusive TRCA T-shirt for your child!</p>
+            <p class="text-xs text-slate-600 font-medium">Includes a FREE exclusive RCA T-shirt for your child!</p>
           </div>
         </div>
         <label class="relative inline-flex items-center cursor-pointer">
@@ -266,7 +244,7 @@
             <input type="radio" name="package" value="Core Court Membership" class="sr-only" onchange="updatePricing()">
             
             <div class="absolute top-0 right-0">
-               <span class="inline-block bg-gradient-to-r from-amber-400 to-amber-500 text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg shadow-sm uppercase tracking-wider">Best Value: Save RM40!</span>
+               <span class="inline-block bg-gradient-to-r from-amber-400 to-amber-500 text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg shadow-sm uppercase tracking-wider">Best Value</span>
             </div>
 
             <div>
@@ -281,11 +259,38 @@
         </div>
       </section>
 
+      <!-- NEW: Step 2.5: Select Class Slot (Auto-updates from Google Sheets) -->
+      <section class="bg-white rounded-2xl p-6 shadow-sm border border-brand-200 relative">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center space-x-3">
+            <div class="w-7 h-7 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center font-bold text-sm">3</div>
+            <h3 class="text-lg font-bold text-slate-900">Select Date & Time</h3>
+          </div>
+          <div id="slotLoadingSpinner" class="flex items-center space-x-2 text-xs font-bold text-brand-500 animate-pulse">
+            <i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i>
+            <span>Syncing...</span>
+          </div>
+        </div>
+        
+        <div class="pl-2">
+          <label class="block text-xs font-bold text-slate-700 uppercase mb-3">Available Weekends (<span id="currentMonthLabel" class="text-brand-600">Loading...</span>)</label>
+          
+          <!-- NEW: Dynamic Calendar Grid -->
+          <div id="calendarGrid" class="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <!-- Cards will be injected here by Javascript -->
+          </div>
+          
+          <!-- Hidden input to store the selected value for the form submission -->
+          <input type="hidden" id="classSlot" required>
+          <p id="slotError" class="text-xs text-red-500 font-bold hidden mt-3 bg-red-50 p-2 rounded-lg border border-red-100 flex items-center gap-1.5"><i data-lucide="alert-circle" class="w-4 h-4"></i> Please select a class slot to continue.</p>
+        </div>
+      </section>
+
       <!-- Step 3: Details -->
       <section class="bg-white rounded-3xl p-6 shadow-sm border border-brand-100 relative overflow-hidden">
         <div class="absolute top-0 left-0 w-2 h-full bg-brand-500"></div>
         <div class="flex items-center space-x-3 mb-4 pl-2">
-          <div class="w-7 h-7 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center font-bold text-sm">3</div>
+          <div class="w-7 h-7 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center font-bold text-sm">4</div>
           <h3 class="text-lg font-bold text-slate-900">Student & Parent Details</h3>
         </div>
 
@@ -406,7 +411,17 @@
 
   <!-- ALL JAVASCRIPT LOGIC -->
   <script>
-    // Initialize icons
+    lucide.createIcons();
+
+    // ==========================================
+    // PASTE YOUR GOOGLE APPS SCRIPT URL HERE
+    // ==========================================
+    const GOOGLE_SCRIPT_URL = "YOUR_WEB_APP_URL_HERE"; 
+    // ==========================================
+
+    // Default total is RM 50 (Kickstart RM 50)
+    let selectedTotal = 50;
+
     lucide.createIcons();
 
     // Default total is RM 80 (Kickstart RM 50 + Reg Fee RM 30)
@@ -444,6 +459,14 @@
     // FORM HANDLING
     function handleFormSubmit(event) {
       event.preventDefault();
+      
+      // NEW: Check if a calendar slot was selected
+      if (!document.getElementById('classSlot').value) {
+        document.getElementById('slotError').classList.remove('hidden');
+        return; // Stop form submission
+      }
+      document.getElementById('slotError').classList.add('hidden');
+
       document.getElementById('modalAmountDisplay').innerText = `RM ${selectedTotal}.00`;
       document.getElementById('paymentModal').classList.remove('hidden');
     }
@@ -463,106 +486,192 @@
         carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
       }
     }
+    
+    // NEW: Automatic Weekend Generator & Slot Selection
+    function selectSlot(element, slotId, isFull) {
+      if (isFull) return;
 
-    // WHATSAPP REDIRECT
+      // Reset all styles
+      const cards = document.querySelectorAll('.slot-card');
+      cards.forEach(card => {
+        card.classList.remove('border-brand-600', 'bg-brand-50', 'ring-2', 'ring-brand-500');
+        card.classList.add('border-slate-200', 'bg-white');
+      });
+
+      // Highlight selected card
+      element.classList.remove('border-slate-200', 'bg-white');
+      element.classList.add('border-brand-600', 'bg-brand-50', 'ring-2', 'ring-brand-500');
+
+      // Save value and hide error
+      document.getElementById('classSlot').value = slotId;
+      document.getElementById('slotError').classList.add('hidden');
+    }
+
+    function generateDynamicWeekends() {
+      const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
+      const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+      const slots = [];
+      const today = new Date();
+      
+      let targetMonth = today.getMonth();
+      let targetYear = today.getFullYear();
+
+      // Check if there are any weekends left THIS month. 
+      // If we are past the last weekend, auto-forward to next month!
+      let hasRemainingWeekends = false;
+      let tempD = new Date(targetYear, targetMonth, today.getDate());
+      while(tempD.getMonth() === targetMonth) {
+          if (tempD.getDay() === 0 || tempD.getDay() === 6) {
+              hasRemainingWeekends = true;
+              break;
+          }
+          tempD.setDate(tempD.getDate() + 1);
+      }
+
+      if (!hasRemainingWeekends) {
+          targetMonth++;
+          if (targetMonth > 11) { targetMonth = 0; targetYear++; }
+      }
+
+      // Update the UI label to show the active month
+      document.getElementById('currentMonthLabel').innerText = `${monthNames[targetMonth]} ${targetYear}`;
+
+      // Generate the weekend dates
+      let iterDate = new Date(targetYear, targetMonth, 1);
+      if (targetMonth === today.getMonth() && targetYear === today.getFullYear()) {
+          iterDate = new Date(targetYear, targetMonth, today.getDate()); // Start from today
+      }
+
+      while (iterDate.getMonth() === targetMonth) {
+          const dayOfWeek = iterDate.getDay();
+          if (dayOfWeek === 6) { // Saturday
+              slots.push({
+                  id: `${dayNames[6]}, ${iterDate.getDate()} ${monthNames[targetMonth]} (8-10am)`,
+                  day: `${dayNames[6]}, ${iterDate.getDate()} ${monthNames[targetMonth]}`,
+                  time: "8:00 AM - 10:00 AM"
+              });
+          } else if (dayOfWeek === 0) { // Sunday
+              slots.push({
+                  id: `${dayNames[0]}, ${iterDate.getDate()} ${monthNames[targetMonth]} (4-6pm)`,
+                  day: `${dayNames[0]}, ${iterDate.getDate()} ${monthNames[targetMonth]}`,
+                  time: "4:00 PM - 6:00 PM"
+              });
+          }
+          iterDate.setDate(iterDate.getDate() + 1);
+      }
+      return slots;
+    }
+
+    // UPDATED: Mockup version of live slots
+    async function fetchLiveSlots() {
+      const grid = document.getElementById('calendarGrid');
+      const spinner = document.getElementById('slotLoadingSpinner');
+      
+      const dynamicSlots = generateDynamicWeekends();
+      
+      // MOCK DATA: Simulating a backend response for testing the UI
+      // We will pretend the very first upcoming slot is FULL (0 spots)
+      // and the second one has only 2 spots left.
+      let mockLiveData = [];
+      if (dynamicSlots.length > 0) mockLiveData.push({ slot: dynamicSlots[0].id, remaining: 0 });
+      if (dynamicSlots.length > 1) mockLiveData.push({ slot: dynamicSlots[1].id, remaining: 2 });
+
+      spinner.style.display = 'none';
+      grid.innerHTML = ""; 
+
+      if (dynamicSlots.length === 0) {
+        grid.innerHTML = `<div class="col-span-full text-center p-4 text-slate-500 text-sm font-medium">No remaining slots this month.</div>`;
+        return;
+      }
+
+      dynamicSlots.forEach(slot => {
+        // Assume 8 spots by default, unless our mock data says otherwise
+        let remaining = 8; 
+        const backendMatch = mockLiveData.find(s => s.slot === slot.id);
+        if (backendMatch) {
+            remaining = backendMatch.remaining;
+        }
+
+        const isFull = remaining <= 0;
+        const card = document.createElement('div');
+        
+        // Style based on availability
+        card.className = `slot-card border-2 rounded-xl p-3.5 transition-all select-none ${isFull ? 'bg-slate-50 border-slate-200 opacity-60 cursor-not-allowed relative overflow-hidden grayscale' : 'bg-white border-slate-200 hover:border-brand-400 cursor-pointer shadow-sm hover:shadow-md'}`;
+        
+        if (!isFull) {
+            card.onclick = () => selectSlot(card, slot.id, isFull);
+        }
+
+        const fullBadge = isFull 
+          ? `<div class="absolute top-2 right-2 bg-red-100 text-red-700 text-[9px] font-black px-1.5 py-0.5 rounded shadow-sm tracking-wider uppercase transform rotate-3 border border-red-200">Full</div>` 
+          : `<div class="text-[10px] font-bold text-emerald-600 mt-2 bg-emerald-50 inline-block px-1.5 py-0.5 rounded border border-emerald-100">${remaining} spots left</div>`;
+
+        card.innerHTML = `
+            ${fullBadge}
+            <div class="text-xs font-bold ${isFull ? 'text-slate-400 line-through' : 'text-brand-700'} mb-1">${slot.day}</div>
+            <div class="text-sm font-black ${isFull ? 'text-slate-400' : 'text-slate-800'} leading-tight">${slot.time}</div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
     async function sendToWhatsApp() {
       const location = "The Hood, KL";
       const packageType = document.querySelector('input[name="package"]:checked').value;
-      const isNewStudent = document.getElementById('newStudentCheck').checked;
+      const classSlot = document.getElementById('classSlot').value; // Get selected slot
       const parentName = document.getElementById('parentName').value;
       const parentPhone = document.getElementById('parentPhone').value;
       const childName = document.getElementById('childName').value;
       const childAge = document.getElementById('childAge').value;
+      const isNewStudent = document.getElementById('newStudentCheck').checked;
 
-      // Format Registration Status
-      const regStatus = (isNewStudent && packageType !== 'Casual Drop-in (Adhoc)') ? 'Yes (+RM 30 & Free T-Shirt)' : 'No';
+      // Update to Google Sheets!
+      if (GOOGLE_SCRIPT_URL !== "https://script.google.com/macros/s/AKfycbw9ezONcuwSN2fxqRsbDB18cvAvAXjzOiw7d5O5PVxa1nrnQ8ChyW6nlQd_E8Fs2lC5kw/exec") {
+        try {
+          // Send request as plain text string to bypass complicated CORS preflight issues
+          fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST',
+            body: JSON.stringify({
+              ParentName: parentName,
+              ParentPhone: parentPhone,
+              ChildName: childName,
+              ChildAge: childAge,
+              Package: packageType + (isNewStudent && packageType !== 'Casual Drop-in (Adhoc)' ? ' (+Reg Fee)' : ''),
+              Slot: classSlot,
+              Amount: `RM ${selectedTotal}`
+            })
+          });
+        } catch (e) {
+          console.error("Sheets save error:", e);
+        }
+      }
 
+      // WhatsApp Redirect
       const message = `*🎾 NEW KIDS TENNIS REGISTRATION*%0A%0A` +
         `*Parent:* ${parentName}%0A` +
         `*Phone:* ${parentPhone}%0A` +
         `*Child:* ${childName} (${childAge} years old)%0A` +
         `*Location:* ${location}%0A` +
         `*Class Format:* ${packageType}%0A` +
-        `*First-Time Reg:* ${regStatus}%0A` +
+        `*Selected Slot:* ${classSlot}%0A` +
         `*Total Amount:* RM ${selectedTotal}%0A%0A` +
         `_I have completed the QR payment and wish to confirm my spot._`;
 
       window.open(`https://wa.me/601112985037?text=${message}`, '_blank');
       
+      // Close modal after opening WhatsApp
       closeModal();
       document.getElementById('bookingForm').reset();
       updatePricing();
+      
+      // Refresh slots in case they just took the last one!
+      fetchLiveSlots();
     }
 
-    // TENNIS BALL BACKGROUND ANIMATION (HIGH RESOLUTION)
-    const initTennisBackground = () => {
-      const canvas = document.createElement('canvas');
-      canvas.id = 'tennis-background';
-      canvas.className = 'fixed inset-0 pointer-events-none z-[0] opacity-40';
-      document.body.prepend(canvas);
-      
-      const ctx = canvas.getContext('2d');
-      let width, height;
+    // Initialize counts on page load
+    fetchLiveSlots();
 
-      function resize() {
-        const dpr = window.devicePixelRatio || 1;
-        width = window.innerWidth;
-        height = window.innerHeight;
-        
-        canvas.width = width * dpr;
-        canvas.height = height * dpr;
-        
-        ctx.scale(dpr, dpr);
-        
-        canvas.style.width = `${width}px`;
-        canvas.style.height = `${height}px`;
-      }
-      
-      window.addEventListener('resize', resize);
-      resize();
-
-      const balls = [];
-      const numBalls = 15; 
-
-      for (let i = 0; i < numBalls; i++) {
-        balls.push({
-          x: Math.random() * width,
-          y: Math.random() * height,
-          size: Math.random() * 12 + 12, 
-          speedY: Math.random() * 1.2 + 0.5, 
-          speedX: (Math.random() - 0.5) * 0.5, 
-          rot: Math.random() * Math.PI * 2, 
-          rotSpeed: (Math.random() - 0.5) * 0.03 
-        });
-      }
-
-      function drawBall(ball) {
-        ctx.save();
-        ctx.translate(ball.x, ball.y);
-        ctx.rotate(ball.rot);
-
-        // 1. Draw the yellow-green base
-        ctx.beginPath();
-        ctx.arc(0, 0, ball.size, 0, Math.PI * 2);
-        ctx.fillStyle = '#C6F62D'; 
-        ctx.fill();
-        
-        // 2. Draw the outer white border
-        ctx.lineWidth = ball.size * 0.12;
-        ctx.strokeStyle = '#ffffff';
-        ctx.stroke();
-
-        // 3. Draw the classic curved lines (Correctly separated)
-        ctx.beginPath();
-        ctx.arc(-ball.size * 0.7, 0, ball.size * 0.6, -Math.PI / 2, Math.PI / 2);
-        ctx.stroke();
-
-        ctx.beginPath();
-        ctx.arc(ball.size * 0.7, 0, ball.size * 0.6, Math.PI / 2, Math.PI * 1.5);
-        ctx.stroke();
-
-        ctx.restore();
-      }
+   // --- TENNIS BALL BACKGROUND ANIMATION ---
 
       function animate() {
         ctx.clearRect(0, 0, width, height);
