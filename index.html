@@ -651,6 +651,7 @@
           // Send request as plain text string to bypass complicated CORS preflight issues
           fetch(GOOGLE_SCRIPT_URL, {
             method: 'POST',
+            mode: 'no-cors', // Guarantees browsers won't block the background request
             body: JSON.stringify({
               ParentName: parentName,
               ParentPhone: parentPhone,
