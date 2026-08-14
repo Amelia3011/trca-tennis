@@ -82,11 +82,13 @@
       <div class="relative z-10 max-w-xl">
         <span class="text-amber-900 text-xs font-bold uppercase tracking-widest bg-amber-400/40 px-3 py-1.5 rounded-lg backdrop-blur-sm">Enrollment Open</span>
         
-        <img src="IMG_6160.png" alt="Tennis Kids Program" class="w-full h-auto aspect-video object-cover rounded-2xl mt-4 mb-4 shadow-md">
+        <img src="IMG_6160.png" alt="Tennis Kids Program" class="w-full h-auto max-h-72 aspect-video object-cover rounded-2xl mt-4 mb-4 shadow-md">
 
         <h2 class="text-2xl md:text-3xl font-extrabold mb-2 leading-tight">Start Your Child's Tennis Journey</h2>
         <p class="text-slate-700 text-sm md:text-base font-medium">Pick your training pass and confirm your child's spot at our premium indoor facility.</p>
       </div>
+      
+      <!-- SVG Racket replacing Sparkles -->
       <div class="absolute -right-10 -bottom-10 text-amber-500 pointer-events-none opacity-20 transform -rotate-12">
         <svg class="w-64 h-64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
           <!-- Racket Head -->
@@ -114,7 +116,30 @@
       </div>
     </div>
 
-    <!-- NEW: About Us Section -->
+    <!-- About Us Section (Fully Restored) -->
+    <section id="about" class="mb-10 scroll-mt-24">
+      <div class="bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-brand-200 relative overflow-hidden">
+        <!-- Background decoration -->
+        <div class="absolute top-0 right-0 w-32 h-32 bg-brand-50 rounded-bl-full -z-10 opacity-70"></div>
+        
+        <div class="flex items-center space-x-3 mb-4">
+          <div class="w-8 h-8 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center shadow-sm border border-brand-200">
+            <i data-lucide="info" class="w-4 h-4"></i>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900">About Our Academy</h3>
+        </div>
+        
+        <p class="text-slate-600 text-sm md:text-base leading-relaxed mb-8 font-medium">
+          At The Royal Court Academy, we believe in nurturing the next generation of tennis champions in a fun, supportive, and highly engaging environment. Our tailored kids' programs focus on building core motor skills, tennis fundamentals, and sportsmanship that lasts a lifetime.
+        </p>
+        
+        <div class="grid grid-cols-3 gap-4">
+          <div class="flex flex-col items-center text-center">
+            <div class="w-12 h-12 rounded-full bg-accent-100 text-accent-600 flex items-center justify-center mb-2 shadow-sm border border-accent-200">
+              <i data-lucide="heart" class="w-6 h-6"></i>
+            </div>
+            <span class="text-xs font-bold text-slate-700">Fun First</span>
+          </div>
           <div class="flex flex-col items-center text-center">
             <div class="w-12 h-12 rounded-full bg-[#FFEB99] text-amber-700 flex items-center justify-center mb-2 shadow-sm border border-amber-200">
               <i data-lucide="award" class="w-6 h-6"></i>
@@ -239,7 +264,8 @@
               <p class="text-xs text-slate-500 leading-relaxed">Flexible attendance. Drop in when you can. (Requires RM30 Reg. Fee for first-timers).</p>
             </div>
           </label>
-          <!-- EXISTING: Core Court Membership -->
+
+          <!-- Core Court Membership -->
           <label class="relative border-2 border-slate-200 rounded-xl p-5 cursor-pointer hover:border-brand-500 transition-all has-[:checked]:border-brand-600 has-[:checked]:bg-brand-50/50 flex flex-col justify-between overflow-hidden">
             <input type="radio" name="package" value="Core Court Membership" class="sr-only" onchange="updatePricing()">
             
@@ -259,7 +285,7 @@
         </div>
       </section>
 
-      <!-- NEW: Step 2.5: Select Class Slot (Auto-updates from Google Sheets) -->
+      <!-- Step 2.5: Select Class Slot (Auto-updates) -->
       <section class="bg-white rounded-2xl p-6 shadow-sm border border-brand-200 relative">
         <div class="flex items-center justify-between mb-4">
           <div class="flex items-center space-x-3">
@@ -275,7 +301,7 @@
         <div class="pl-2">
           <label class="block text-xs font-bold text-slate-700 uppercase mb-3">Available Weekends (<span id="currentMonthLabel" class="text-brand-600">Loading...</span>)</label>
           
-          <!-- NEW: Dynamic Calendar Grid -->
+          <!-- Dynamic Calendar Grid -->
           <div id="calendarGrid" class="grid grid-cols-2 md:grid-cols-4 gap-3">
             <!-- Cards will be injected here by Javascript -->
           </div>
@@ -416,13 +442,8 @@
     // ==========================================
     // PASTE YOUR GOOGLE APPS SCRIPT URL HERE
     // ==========================================
-    const GOOGLE_SCRIPT_URL = "YOUR_WEB_APP_URL_HERE"; 
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw9ezONcuwSN2fxqRsbDB18cvAvAXjzOiw7d5O5PVxa1nrnQ8ChyW6nlQd_E8Fs2lC5kw/exec"; 
     // ==========================================
-
-    // Default total is RM 50 (Kickstart RM 50)
-    let selectedTotal = 50;
-
-    lucide.createIcons();
 
     // Default total is RM 80 (Kickstart RM 50 + Reg Fee RM 30)
     let selectedTotal = 80;
@@ -454,13 +475,16 @@
 
       selectedTotal = basePrice + registrationFee;
       document.getElementById('finalTotalDisplay').innerText = `RM ${selectedTotal}.00`;
+      
+      // Update Modal amount as well just in case
+      document.getElementById('modalAmountDisplay').innerText = `RM ${selectedTotal}.00`;
     }
 
     // FORM HANDLING
     function handleFormSubmit(event) {
       event.preventDefault();
       
-      // NEW: Check if a calendar slot was selected
+      // Check if a calendar slot was selected
       if (!document.getElementById('classSlot').value) {
         document.getElementById('slotError').classList.remove('hidden');
         return; // Stop form submission
@@ -487,7 +511,7 @@
       }
     }
     
-    // NEW: Automatic Weekend Generator & Slot Selection
+    // Automatic Weekend Generator & Slot Selection
     function selectSlot(element, slotId, isFull) {
       if (isFull) return;
 
@@ -562,7 +586,7 @@
       return slots;
     }
 
-    // UPDATED: Mockup version of live slots
+    // Mockup version of live slots (Testing mode)
     async function fetchLiveSlots() {
       const grid = document.getElementById('calendarGrid');
       const spinner = document.getElementById('slotLoadingSpinner');
@@ -570,11 +594,9 @@
       const dynamicSlots = generateDynamicWeekends();
       
       // MOCK DATA: Simulating a backend response for testing the UI
-      // We will pretend the very first upcoming slot is FULL (0 spots)
-      // and the second one has only 2 spots left.
       let mockLiveData = [];
-      if (dynamicSlots.length > 0) mockLiveData.push({ slot: dynamicSlots[0].id, remaining: 0 });
-      if (dynamicSlots.length > 1) mockLiveData.push({ slot: dynamicSlots[1].id, remaining: 2 });
+      if (dynamicSlots.length > 0) mockLiveData.push({ slot: dynamicSlots[0].id, remaining: 0 }); // First is FULL
+      if (dynamicSlots.length > 1) mockLiveData.push({ slot: dynamicSlots[1].id, remaining: 2 }); // Second has 2 spots
 
       spinner.style.display = 'none';
       grid.innerHTML = ""; 
@@ -585,7 +607,6 @@
       }
 
       dynamicSlots.forEach(slot => {
-        // Assume 8 spots by default, unless our mock data says otherwise
         let remaining = 8; 
         const backendMatch = mockLiveData.find(s => s.slot === slot.id);
         if (backendMatch) {
@@ -595,7 +616,6 @@
         const isFull = remaining <= 0;
         const card = document.createElement('div');
         
-        // Style based on availability
         card.className = `slot-card border-2 rounded-xl p-3.5 transition-all select-none ${isFull ? 'bg-slate-50 border-slate-200 opacity-60 cursor-not-allowed relative overflow-hidden grayscale' : 'bg-white border-slate-200 hover:border-brand-400 cursor-pointer shadow-sm hover:shadow-md'}`;
         
         if (!isFull) {
@@ -626,7 +646,7 @@
       const isNewStudent = document.getElementById('newStudentCheck').checked;
 
       // Update to Google Sheets!
-      if (GOOGLE_SCRIPT_URL !== "https://script.google.com/macros/s/AKfycbw9ezONcuwSN2fxqRsbDB18cvAvAXjzOiw7d5O5PVxa1nrnQ8ChyW6nlQd_E8Fs2lC5kw/exec") {
+      if (GOOGLE_SCRIPT_URL !== "YOUR_WEB_APP_URL_HERE") {
         try {
           // Send request as plain text string to bypass complicated CORS preflight issues
           fetch(GOOGLE_SCRIPT_URL, {
@@ -671,7 +691,68 @@
     // Initialize counts on page load
     fetchLiveSlots();
 
-   // --- TENNIS BALL BACKGROUND ANIMATION ---
+    // --- TENNIS BALL BACKGROUND ANIMATION ---
+    const initTennisBackground = () => {
+      const canvas = document.createElement('canvas');
+      canvas.id = 'tennis-background';
+      // Fixed positioning, takes up full screen, ignores pointer events, sits behind content
+      canvas.className = 'fixed inset-0 w-full h-full pointer-events-none z-[0] opacity-50';
+      document.body.prepend(canvas);
+      
+      const ctx = canvas.getContext('2d');
+      let width, height;
+
+      function resize() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      }
+      window.addEventListener('resize', resize);
+      resize();
+
+      const balls = [];
+      const numBalls = 15; // Number of balls falling
+
+      for (let i = 0; i < numBalls; i++) {
+        balls.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          size: Math.random() * 12 + 12, // Radius size
+          speedY: Math.random() * 1.2 + 0.5, // Fall speed
+          speedX: (Math.random() - 0.5) * 0.5, // Slight horizontal drift
+          rot: Math.random() * Math.PI * 2, // Current rotation
+          rotSpeed: (Math.random() - 0.5) * 0.03 // Rotation speed
+        });
+      }
+
+      function drawBall(ball) {
+        ctx.save();
+        ctx.translate(ball.x, ball.y);
+        ctx.rotate(ball.rot);
+
+        // 1. Draw the yellow-green base
+        ctx.beginPath();
+        ctx.arc(0, 0, ball.size, 0, Math.PI * 2);
+        ctx.fillStyle = '#C6F62D'; 
+        ctx.fill();
+        
+        // 2. Draw the outer white border
+        ctx.lineWidth = ball.size * 0.12;
+        ctx.strokeStyle = '#ffffff';
+        ctx.stroke();
+
+        // 3. Draw the classic tennis ball white curved lines
+        ctx.beginPath();
+        // Left curve
+        ctx.arc(-ball.size * 0.7, 0, ball.size * 0.6, -Math.PI / 2, Math.PI / 2);
+        ctx.stroke();
+
+        ctx.beginPath();
+        // Right curve (facing away)
+        ctx.arc(ball.size * 0.7, 0, ball.size * 0.6, Math.PI / 2, Math.PI * 1.5);
+        ctx.stroke();
+
+        ctx.restore();
+      }
 
       function animate() {
         ctx.clearRect(0, 0, width, height);
@@ -681,10 +762,12 @@
           ball.x += ball.speedX;
           ball.rot += ball.rotSpeed;
 
+          // Wrap around to top when it falls off the bottom edge
           if (ball.y - ball.size > height) {
             ball.y = -ball.size;
             ball.x = Math.random() * width;
           }
+          // Horizontal screen wrapping
           if (ball.x - ball.size > width) ball.x = -ball.size;
           if (ball.x + ball.size < 0) ball.x = width + ball.size;
 
