@@ -301,9 +301,10 @@
             <input type="text" id="childName1" required placeholder="e.g. Adam" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 focus:outline-none text-sm bg-slate-50 transition-all">
           </div>
           <div>
-            <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Child's Age (4-12 Years)</label>
+            <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Child's Age (3-12 Years)</label>
             <select id="childAge1" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 focus:outline-none text-sm bg-slate-50 transition-all appearance-none cursor-pointer">
               <option value="">Select Age</option>
+              <option value="3">3 Years Old</option>
               <option value="4">4 Years Old</option>
               <option value="5">5 Years Old</option>
               <option value="6">6 Years Old</option>
@@ -466,9 +467,10 @@
             <input type="text" id="childName${i}" value="${savedName}" required placeholder="e.g. Adam" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 focus:outline-none text-sm bg-slate-50 transition-all">
           </div>
           <div>
-            <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">${labelPrefix} Age (4-12 Years)</label>
+            <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">${labelPrefix} Age (3-12 Years)</label>
             <select id="childAge${i}" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 focus:outline-none text-sm bg-slate-50 transition-all appearance-none cursor-pointer">
               <option value="" ${getAgeSelected('')}>Select Age</option>
+               <option value="3" ${getAgeSelected('3')}>3 Years Old</option>
               <option value="4" ${getAgeSelected('4')}>4 Years Old</option>
               <option value="5" ${getAgeSelected('5')}>5 Years Old</option>
               <option value="6" ${getAgeSelected('6')}>6 Years Old</option>
@@ -587,7 +589,7 @@
         if (response.ok) {
           liveData = await response.json();
         } else {
-          console.warn("Google Sheet responded with an error, using default 8 spots.");
+          console.warn("Google Sheet responded with an error, using default 16/24 spots.");
         }
       } catch (e) {
         console.warn("Live fetch blocked: Ensure Google Web App access is set to 'Anyone'. Using defaults.", e.message);
@@ -602,7 +604,9 @@
       }
 
       dynamicSlots.forEach(slot => {
-        let remaining = 8; 
+        // Set default spots based on whether it is a Saturday or Sunday
+        let remaining = slot.id.startsWith('Sat') ? 16 : 24; 
+
         if (Array.isArray(liveData)) {
             const backendMatch = liveData.find(s => s.slot === slot.id);
             if (backendMatch) remaining = backendMatch.remaining;
