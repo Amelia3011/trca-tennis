@@ -553,15 +553,15 @@
           const dayOfWeek = iterDate.getDay();
           if (dayOfWeek === 6) { 
               slots.push({
-                  id: `${dayNames[6]}, ${iterDate.getDate()} ${monthNames[targetMonth]} (8-10am)`,
+                  id: `${dayNames[6]}, ${iterDate.getDate()} ${monthNames[targetMonth]} (9-10am)`,
                   day: `${dayNames[6]}, ${iterDate.getDate()} ${monthNames[targetMonth]}`,
-                  time: "8:00 AM - 10:00 AM"
+                  time: "9:00 AM - 10:00 AM"
               });
           } else if (dayOfWeek === 0) { 
               slots.push({
-                  id: `${dayNames[0]}, ${iterDate.getDate()} ${monthNames[targetMonth]} (4-6pm)`,
+                  id: `${dayNames[0]}, ${iterDate.getDate()} ${monthNames[targetMonth]} (4-5pm)`,
                   day: `${dayNames[0]}, ${iterDate.getDate()} ${monthNames[targetMonth]}`,
-                  time: "4:00 PM - 6:00 PM"
+                  time: "4:00 PM - 5:00 PM"
               });
           }
           iterDate.setDate(iterDate.getDate() + 1);
