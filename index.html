@@ -216,7 +216,7 @@
           <h3 class="text-lg font-bold text-slate-900">Choose Class Format</h3>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <!-- Option 1 -->
           <label class="relative border-2 border-slate-200 rounded-xl p-5 cursor-pointer hover:border-brand-500 transition-all has-[:checked]:border-brand-600 has-[:checked]:bg-brand-50/50 flex flex-col justify-between">
             <input type="radio" name="package" value="Casual Drop-in (Adhoc)" class="sr-only" onchange="updatePricing()">
@@ -230,20 +230,7 @@
             </div>
           </label>
 
-          <!-- Option 2 (This is the section that was missing its tags) -->
-          <label class="relative border-2 border-slate-200 rounded-xl p-5 cursor-pointer hover:border-brand-500 transition-all has-[:checked]:border-brand-600 has-[:checked]:bg-brand-50/50 flex flex-col justify-between">
-            <input type="radio" name="package" value="Court Kickstart" class="sr-only" onchange="updatePricing()">
-            <div>
-              <div class="flex justify-between items-start mb-2">
-                <span class="inline-block bg-slate-100 text-slate-700 text-[10px] font-bold px-2 py-1 rounded uppercase">Flexible</span>
-                <span class="text-xl font-extrabold text-brand-600">RM 50</span>
-              </div>
-              <h4 class="font-bold text-slate-900 text-base mb-1">Court Kickstart</h4>
-              <p class="text-xs text-slate-500 leading-relaxed">Flexible attendance. Drop in when you can. (Requires RM30 Reg. Fee for first-timers).</p>
-            </div>
-          </label>
-
-          <!-- Option 3 -->
+          <!-- Option 2 -->
           <label class="relative border-2 border-slate-200 rounded-xl p-5 cursor-pointer hover:border-brand-500 transition-all has-[:checked]:border-brand-600 has-[:checked]:bg-brand-50/50 flex flex-col justify-between overflow-hidden">
             <input type="radio" name="package" value="Core Court Membership" class="sr-only" onchange="updatePricing()">
             <div class="absolute top-0 right-0">
@@ -393,40 +380,41 @@
           <i data-lucide="message-circle" class="w-5 h-5"></i>
           <span>Submit & Confirm via WhatsApp</span>
         </button>
-        <p class="text-[11px] font-medium text-center text-slate-400">Clicking above logs your registration to Google Sheets and redirects to WhatsApp.</p>
-      </div>
+    <script>
+      lucide.createIcons();
 
-    </div>
-  </div>
+      // YOUR EXACT GOOGLE SCRIPT URL IS HARDCODED HERE
+      const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwPtlz4rlov8qufarhIFvc2YDn-KwQ9JdQWOlWAQGxKybELGeO90XEhJ42fDBMX9F1BIQ/exec"; 
+      const COACH_WHATSAPP = "601112985037"; // Your correct phone number
 
-  <script>
-    lucide.createIcons();
+      let selectedTotal = 80;
 
-    // YOUR EXACT GOOGLE SCRIPT URL IS HARDCODED HERE
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwPtlz4rlov8qufarhIFvc2YDn-KwQ9JdQWOlWAQGxKybELGeO90XEhJ42fDBMX9F1BIQ/exec"; 
-    const COACH_WHATSAPP = "601112985037"; // Your correct phone number
+      function updatePricing() {
+        const packageRadio = document.querySelector('input[name="package"]:checked');
+        if(!packageRadio) return; // Prevent error if nothing is selected yet
+        const packageType = packageRadio.value;
+        const isNewStudent = document.getElementById('newStudentCheck').checked;
+        const regContainer = document.getElementById('regFeeContainer');
 
-    let selectedTotal = 80;
+        let basePrice = 0;
+        if (packageType === 'Casual Drop-in (Adhoc)') basePrice = 50; 
+        else if (packageType === 'Core Court Membership') basePrice = 160;
 
-    function updatePricing() {
-      const packageType = document.querySelector('input[name="package"]:checked').value;
-      const isNewStudent = document.getElementById('newStudentCheck').checked;
-      const regContainer = document.getElementById('regFeeContainer');
-
-      let basePrice = 0;
-      if (packageType === 'Casual Drop-in (Adhoc)') basePrice = 50; // Corrected from 60 to 50 to match UI
-      else if (packageType === 'Court Kickstart') basePrice = 50;
-      else if (packageType === 'Core Court Membership') basePrice = 160;
-
-      let registrationFee = 0;
-      if (packageType === 'Casual Drop-in (Adhoc)') {
-        regContainer.classList.add('opacity-40', 'pointer-events-none');
-        document.getElementById('newStudentCheck').checked = false; 
-      } else {
-        regContainer.classList.remove('opacity-40', 'pointer-events-none');
-        if (isNewStudent) {
-          registrationFee = 30;
+        let registrationFee = 0;
+        if (packageType === 'Casual Drop-in (Adhoc)') {
+          regContainer.classList.add('opacity-40', 'pointer-events-none');
+          document.getElementById('newStudentCheck').checked = false; 
+        } else {
+          regContainer.classList.remove('opacity-40', 'pointer-events-none');
+          if (isNewStudent) {
+            registrationFee = 30;
+          }
         }
+
+        selectedTotal = basePrice + registrationFee;
+        document.getElementById('finalTotalDisplay').innerText = `RM ${selectedTotal}.00`;
+        document.getElementById('modalAmountDisplay').innerText = `RM ${selectedTotal}.00`;
+      }
       }
 
       selectedTotal = basePrice + registrationFee;
