@@ -217,6 +217,7 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <!-- Option 1 -->
           <label class="relative border-2 border-slate-200 rounded-xl p-5 cursor-pointer hover:border-brand-500 transition-all has-[:checked]:border-brand-600 has-[:checked]:bg-brand-50/50 flex flex-col justify-between">
             <input type="radio" name="package" value="Casual Drop-in (Adhoc)" class="sr-only" onchange="updatePricing()">
             <div>
@@ -228,11 +229,21 @@
               <p class="text-xs text-slate-500 leading-relaxed">Perfect for testing the waters. One-off class with zero upfront commitment.</p>
             </div>
           </label>
+
+          <!-- Option 2 (This is the section that was missing its tags) -->
+          <label class="relative border-2 border-slate-200 rounded-xl p-5 cursor-pointer hover:border-brand-500 transition-all has-[:checked]:border-brand-600 has-[:checked]:bg-brand-50/50 flex flex-col justify-between">
+            <input type="radio" name="package" value="Court Kickstart" class="sr-only" onchange="updatePricing()">
+            <div>
+              <div class="flex justify-between items-start mb-2">
+                <span class="inline-block bg-slate-100 text-slate-700 text-[10px] font-bold px-2 py-1 rounded uppercase">Flexible</span>
+                <span class="text-xl font-extrabold text-brand-600">RM 50</span>
+              </div>
               <h4 class="font-bold text-slate-900 text-base mb-1">Court Kickstart</h4>
               <p class="text-xs text-slate-500 leading-relaxed">Flexible attendance. Drop in when you can. (Requires RM30 Reg. Fee for first-timers).</p>
             </div>
           </label>
 
+          <!-- Option 3 -->
           <label class="relative border-2 border-slate-200 rounded-xl p-5 cursor-pointer hover:border-brand-500 transition-all has-[:checked]:border-brand-600 has-[:checked]:bg-brand-50/50 flex flex-col justify-between overflow-hidden">
             <input type="radio" name="package" value="Core Court Membership" class="sr-only" onchange="updatePricing()">
             <div class="absolute top-0 right-0">
@@ -403,7 +414,7 @@
       const regContainer = document.getElementById('regFeeContainer');
 
       let basePrice = 0;
-      if (packageType === 'Casual Drop-in (Adhoc)') basePrice = 60;
+      if (packageType === 'Casual Drop-in (Adhoc)') basePrice = 50; // Corrected from 60 to 50 to match UI
       else if (packageType === 'Court Kickstart') basePrice = 50;
       else if (packageType === 'Core Court Membership') basePrice = 160;
 
