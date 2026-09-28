@@ -217,7 +217,6 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <!-- Option 1 -->
           <label class="relative border-2 border-slate-200 rounded-xl p-5 cursor-pointer hover:border-brand-500 transition-all has-[:checked]:border-brand-600 has-[:checked]:bg-brand-50/50 flex flex-col justify-between">
             <input type="radio" name="package" value="Casual Drop-in (Adhoc)" class="sr-only" onchange="updatePricing()">
             <div>
@@ -230,7 +229,6 @@
             </div>
           </label>
 
-          <!-- Option 2 -->
           <label class="relative border-2 border-slate-200 rounded-xl p-5 cursor-pointer hover:border-brand-500 transition-all has-[:checked]:border-brand-600 has-[:checked]:bg-brand-50/50 flex flex-col justify-between overflow-hidden">
             <input type="radio" name="package" value="Core Court Membership" class="sr-only" onchange="updatePricing()">
             <div class="absolute top-0 right-0">
@@ -277,7 +275,7 @@
           <h3 class="text-lg font-bold text-slate-900">Student & Parent Details</h3>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-5 pl-2">
+        <div class="grid md:grid-cols-2 gap-5 pl-2 mb-5">
           <div>
             <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Parent's Full Name</label>
             <input type="text" id="parentName" required placeholder="e.g. Sarah Ahmad" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 focus:outline-none text-sm bg-slate-50 transition-all">
@@ -286,13 +284,25 @@
             <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">WhatsApp Mobile Number</label>
             <input type="tel" id="parentPhone" required placeholder="e.g. 0123456789" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 focus:outline-none text-sm bg-slate-50 transition-all">
           </div>
+          <div class="col-span-1 md:col-span-2">
+            <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Number of Children</label>
+            <select id="numKids" onchange="updateKidsFields(); updatePricing();" class="w-full md:w-1/2 px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 focus:outline-none text-sm bg-slate-50 transition-all appearance-none cursor-pointer">
+              <option value="1">1 Child</option>
+              <option value="2">2 Children</option>
+              <option value="3">3 Children</option>
+              <option value="4">4 Children</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="childrenContainer" class="grid md:grid-cols-2 gap-5 pl-2">
           <div>
             <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Child's Name</label>
-            <input type="text" id="childName" required placeholder="e.g. Adam" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 focus:outline-none text-sm bg-slate-50 transition-all">
+            <input type="text" id="childName1" required placeholder="e.g. Adam" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 focus:outline-none text-sm bg-slate-50 transition-all">
           </div>
           <div>
             <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">Child's Age (4-12 Years)</label>
-            <select id="childAge" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 focus:outline-none text-sm bg-slate-50 transition-all appearance-none cursor-pointer">
+            <select id="childAge1" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 focus:outline-none text-sm bg-slate-50 transition-all appearance-none cursor-pointer">
               <option value="">Select Age</option>
               <option value="4">4 Years Old</option>
               <option value="5">5 Years Old</option>
@@ -380,46 +390,99 @@
           <i data-lucide="message-circle" class="w-5 h-5"></i>
           <span>Submit & Confirm via WhatsApp</span>
         </button>
-    <script>
-      lucide.createIcons();
+      </div>
 
-      // YOUR EXACT GOOGLE SCRIPT URL IS HARDCODED HERE
-      const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwPtlz4rlov8qufarhIFvc2YDn-KwQ9JdQWOlWAQGxKybELGeO90XEhJ42fDBMX9F1BIQ/exec"; 
-      const COACH_WHATSAPP = "601112985037"; // Your correct phone number
+    </div>
+  </div>
 
-      let selectedTotal = 80;
+  <script>
+    lucide.createIcons();
 
-      function updatePricing() {
-        const packageRadio = document.querySelector('input[name="package"]:checked');
-        if(!packageRadio) return; // Prevent error if nothing is selected yet
-        const packageType = packageRadio.value;
-        const isNewStudent = document.getElementById('newStudentCheck').checked;
-        const regContainer = document.getElementById('regFeeContainer');
+    // YOUR EXACT GOOGLE SCRIPT URL IS HARDCODED HERE
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwPtlz4rlov8qufarhIFvc2YDn-KwQ9JdQWOlWAQGxKybELGeO90XEhJ42fDBMX9F1BIQ/exec"; 
+    const COACH_WHATSAPP = "601112985037"; // Your correct phone number
 
-        let basePrice = 0;
-        if (packageType === 'Casual Drop-in (Adhoc)') basePrice = 50; 
-        else if (packageType === 'Core Court Membership') basePrice = 160;
+    let selectedTotal = 80;
 
-        let registrationFee = 0;
-        if (packageType === 'Casual Drop-in (Adhoc)') {
-          regContainer.classList.add('opacity-40', 'pointer-events-none');
-          document.getElementById('newStudentCheck').checked = false; 
-        } else {
-          regContainer.classList.remove('opacity-40', 'pointer-events-none');
-          if (isNewStudent) {
-            registrationFee = 30;
-          }
+    function updatePricing() {
+      const packageRadio = document.querySelector('input[name="package"]:checked');
+      if(!packageRadio) return; 
+      
+      const packageType = packageRadio.value;
+      const isNewStudent = document.getElementById('newStudentCheck').checked;
+      const regContainer = document.getElementById('regFeeContainer');
+
+      let basePrice = 0;
+      if (packageType === 'Casual Drop-in (Adhoc)') basePrice = 50; 
+      else if (packageType === 'Core Court Membership') basePrice = 160;
+
+      let registrationFee = 0;
+      if (packageType === 'Casual Drop-in (Adhoc)') {
+        regContainer.classList.add('opacity-40', 'pointer-events-none');
+        document.getElementById('newStudentCheck').checked = false; 
+      } else {
+        regContainer.classList.remove('opacity-40', 'pointer-events-none');
+        if (isNewStudent) {
+          registrationFee = 30;
         }
-
-        selectedTotal = basePrice + registrationFee;
-        document.getElementById('finalTotalDisplay').innerText = `RM ${selectedTotal}.00`;
-        document.getElementById('modalAmountDisplay').innerText = `RM ${selectedTotal}.00`;
-      }
       }
 
-      selectedTotal = basePrice + registrationFee;
+      const numKids = parseInt(document.getElementById('numKids').value) || 1;
+      
+      selectedTotal = (basePrice + registrationFee) * numKids;
       document.getElementById('finalTotalDisplay').innerText = `RM ${selectedTotal}.00`;
       document.getElementById('modalAmountDisplay').innerText = `RM ${selectedTotal}.00`;
+    }
+
+    function updateKidsFields() {
+      const numKids = parseInt(document.getElementById('numKids').value) || 1;
+      const container = document.getElementById('childrenContainer');
+      
+      // Save existing typed values so they aren't lost when changing dropdown
+      const existingData = [];
+      for (let i = 1; i <= 4; i++) {
+        const nameInput = document.getElementById(`childName${i}`);
+        const ageInput = document.getElementById(`childAge${i}`);
+        existingData[i] = {
+          name: nameInput ? nameInput.value : '',
+          age: ageInput ? ageInput.value : ''
+        };
+      }
+
+      let html = '';
+      for (let i = 1; i <= numKids; i++) {
+        let labelPrefix = numKids > 1 ? `Child ${i}'s` : `Child's`;
+        let headerHtml = numKids > 1 ? `<div class="col-span-full ${i > 1 ? 'mt-2 pt-4 border-t border-slate-100' : ''}"><h4 class="text-sm font-bold text-brand-600">Child ${i} Details</h4></div>` : '';
+        
+        let savedName = existingData[i] ? existingData[i].name : '';
+        let savedAge = existingData[i] ? existingData[i].age : '';
+
+        const getAgeSelected = (val) => savedAge === val.toString() ? 'selected' : '';
+
+        html += `
+          ${headerHtml}
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">${labelPrefix} Name</label>
+            <input type="text" id="childName${i}" value="${savedName}" required placeholder="e.g. Adam" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 focus:outline-none text-sm bg-slate-50 transition-all">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase mb-1.5">${labelPrefix} Age (4-12 Years)</label>
+            <select id="childAge${i}" required class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 focus:outline-none text-sm bg-slate-50 transition-all appearance-none cursor-pointer">
+              <option value="" ${getAgeSelected('')}>Select Age</option>
+              <option value="4" ${getAgeSelected('4')}>4 Years Old</option>
+              <option value="5" ${getAgeSelected('5')}>5 Years Old</option>
+              <option value="6" ${getAgeSelected('6')}>6 Years Old</option>
+              <option value="7" ${getAgeSelected('7')}>7 Years Old</option>
+              <option value="8" ${getAgeSelected('8')}>8 Years Old</option>
+              <option value="9" ${getAgeSelected('9')}>9 Years Old</option>
+              <option value="10" ${getAgeSelected('10')}>10 Years Old</option>
+              <option value="11" ${getAgeSelected('11')}>11 Years Old</option>
+              <option value="12" ${getAgeSelected('12')}>12 Years Old</option>
+            </select>
+          </div>
+        `;
+      }
+      container.innerHTML = html;
     }
 
     function handleFormSubmit(event) {
@@ -576,9 +639,25 @@
       const classSlot = document.getElementById('classSlot').value;
       const parentName = document.getElementById('parentName').value;
       const parentPhone = document.getElementById('parentPhone').value;
-      const childName = document.getElementById('childName').value;
-      const childAge = document.getElementById('childAge').value;
       const isNewStudent = document.getElementById('newStudentCheck').checked;
+      const numKids = parseInt(document.getElementById('numKids').value) || 1;
+      
+      // Grab all children data dynamically
+      let childNamesArr = [];
+      let childAgesArr = [];
+      let childMessageText = "";
+
+      for (let i = 1; i <= numKids; i++) {
+        let cName = document.getElementById(`childName${i}`).value;
+        let cAge = document.getElementById(`childAge${i}`).value;
+        childNamesArr.push(cName);
+        childAgesArr.push(cAge);
+        childMessageText += `*Child ${i}:* ${cName} (${cAge} years old)%0A`;
+      }
+
+      // Combine arrays into a single string so it fits safely into your current Google Sheet columns
+      const combinedChildNames = childNamesArr.join(", ");
+      const combinedChildAges = childAgesArr.join(", ");
 
       try {
         // We await the fetch so we know Google received it before redirecting!
@@ -589,8 +668,8 @@
           body: JSON.stringify({
             ParentName: parentName,
             ParentPhone: parentPhone,
-            ChildName: childName,
-            ChildAge: childAge,
+            ChildName: combinedChildNames,
+            ChildAge: combinedChildAges,
             Package: packageType + (isNewStudent && packageType !== 'Casual Drop-in (Adhoc)' ? ' (+Reg Fee)' : ''),
             Slot: classSlot,
             Amount: `RM ${selectedTotal}`
@@ -603,8 +682,9 @@
       const message = `*🎾 NEW KIDS TENNIS REGISTRATION*%0A%0A` +
         `*Parent:* ${parentName}%0A` +
         `*Phone:* ${parentPhone}%0A` +
-        `*Child:* ${childName} (${childAge} years old)%0A` +
-        `*Location:* ${location}%0A` +
+        `*Total Children:* ${numKids}%0A%0A` +
+        childMessageText + 
+        `%0A*Location:* ${location}%0A` +
         `*Class Format:* ${packageType}%0A` +
         `*Selected Slot:* ${classSlot}%0A` +
         `*Total Amount:* RM ${selectedTotal}%0A%0A` +
