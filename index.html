@@ -77,6 +77,7 @@
         <p class="text-slate-700 text-sm md:text-base font-medium">Pick your training pass and confirm your child's spot at our premium indoor facility.</p>
       </div>
       
+      <!-- Custom SVG Racket replacing Sparkles -->
       <div class="absolute -right-10 -bottom-10 text-amber-500 pointer-events-none opacity-20 transform -rotate-12">
         <svg class="w-64 h-64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
           <ellipse cx="15" cy="9" rx="4.5" ry="6.5" transform="rotate(-45 15 9)" />
@@ -393,12 +394,12 @@
   <script>
     lucide.createIcons();
 
-    // =====================================================================================
-    // IMPORTANT: REPLACE THE URL BELOW WITH YOUR COMPLETELY NEW DEPLOYED APPS SCRIPT URL!!!
-    // =====================================================================================
+    // =====================================================================
+    // IMPORTANT: REPLACE THE URL BELOW WITH YOUR DEPLOYED APPS SCRIPT URL
+    // =====================================================================
     const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxq-_Kh0T0tLuJSg33SpD4FxZ02iYNRMHoWOXB0b0LsqpF8aa_mFIXSqxuM8WDCGEE/exec"; 
+    
     const COACH_WHATSAPP = "601112985037";
-
     let selectedTotal = 190;
 
     function updatePricing() {
@@ -664,6 +665,7 @@
 
         await fetch(GOOGLE_SCRIPT_URL, {
           method: 'POST',
+          mode: 'no-cors',
           body: formData
         });
       } catch (e) {
@@ -681,7 +683,7 @@
         `*Total Amount:* RM ${selectedTotal}%0A%0A` +
         `_I have completed the QR payment and wish to confirm my spot._`;
 
-      // NEW FIX: Open WhatsApp in a NEW tab, so the browser stays on the page and updates the slots.
+      // FIX: Open WhatsApp in a NEW tab, so the script below it can keep running!
       window.open(`https://wa.me/${COACH_WHATSAPP}?text=${message}`, '_blank');
       
       closeModal();
@@ -691,7 +693,7 @@
       btn.innerHTML = `<i data-lucide="message-circle" class="w-5 h-5"></i><span>Submit & Confirm via WhatsApp</span>`;
       btn.disabled = false;
       
-      // Because we opened a new tab, this timer will now run correctly 1.5s later!
+      // Now this will successfully run since we didn't redirect the parent tab!
       setTimeout(() => {
         fetchLiveSlots(); 
       }, 1500);
