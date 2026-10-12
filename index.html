@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -225,7 +224,6 @@
             </div>
           </label>
 
-          <!-- FIX: Added 'checked' to this option so there is a default selection -->
           <label class="relative border-2 border-slate-200 rounded-xl p-5 cursor-pointer hover:border-brand-500 transition-all has-[:checked]:border-brand-600 has-[:checked]:bg-brand-50/50 flex flex-col justify-between overflow-hidden">
             <input type="radio" name="package" value="Core Court Membership" class="sr-only" checked onchange="updatePricing()">
             <div class="absolute top-0 right-0">
@@ -396,9 +394,11 @@
   <script>
     lucide.createIcons();
 
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/library/d/1wwCZUPY6cLfah_ob25hOct0SoyGpngS8M02NrBKMF49bMyMnx_f2CIU2/1"; 
+    // =====================================================================
+    // IMPORTANT: REPLACE THE URL BELOW WITH YOUR DEPLOYED APPS SCRIPT URL
+    // =====================================================================
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx1cJArGEx7C5V8OUmlqlRiXOaNZDtJevd-fapp_YlwtYOFAgsMOJlyOpyoVLjtmzSZ0g/exec"; 
     const COACH_WHATSAPP = "601112985037";
-
     let selectedTotal = 190;
 
     function updatePricing() {
@@ -660,7 +660,7 @@
             ParentPhone: parentPhone,
             ChildName: combinedChildNames,
             ChildAge: combinedChildAges,
-            NumKids: numKids, // FIX: Added this back so spots deduct correctly!
+            NumKids: numKids,
             Package: packageType + (isNewStudent && packageType !== 'Casual Drop-in (Adhoc)' ? ' (+Reg Fee)' : ''),
             Slot: classSlot,
             Amount: `RM ${selectedTotal}`
@@ -681,8 +681,8 @@
         `*Total Amount:* RM ${selectedTotal}%0A%0A` +
         `_I have completed the QR payment and wish to confirm my spot._`;
 
-      // FIX: Mobile-safe redirect that bypasses Safari/Chrome popup blockers
-      window.location.href = `https://wa.me/${COACH_WHATSAPP}?text=${message}`;
+      // FIX: Open WhatsApp in a NEW tab, so the script below it can keep running!
+      window.open(`https://wa.me/${COACH_WHATSAPP}?text=${message}`, '_blank');
       
       closeModal();
       document.getElementById('bookingForm').reset();
@@ -691,6 +691,7 @@
       btn.innerHTML = `<i data-lucide="message-circle" class="w-5 h-5"></i><span>Submit & Confirm via WhatsApp</span>`;
       btn.disabled = false;
       
+      // Now this will successfully run since we didn't redirect the parent tab!
       setTimeout(() => {
         fetchLiveSlots(); 
       }, 1500);
