@@ -213,15 +213,19 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Casual Drop-in card with Strikethrough UI -->
           <label class="relative border-2 border-slate-200 rounded-xl p-5 cursor-pointer hover:border-brand-500 transition-all has-[:checked]:border-brand-600 has-[:checked]:bg-brand-50/50 flex flex-col justify-between">
             <input type="radio" name="package" value="Casual Drop-in (Adhoc)" class="sr-only" onchange="updatePricing()" required>
             <div>
               <div class="flex justify-between items-start mb-2">
                 <span class="inline-block bg-slate-100 text-slate-700 text-[10px] font-bold px-2 py-1 rounded uppercase">No Commit</span>
-                <span class="text-xl font-extrabold text-brand-600">RM 50</span>
+                <div class="flex flex-col items-end">
+                  <span class="text-xs font-bold text-slate-400 line-through">RM 50</span>
+                  <span class="text-xl font-extrabold text-brand-600 leading-none">RM 40</span>
+                </div>
               </div>
               <h4 class="font-bold text-slate-900 text-base mb-1">Casual Drop-in (Adhoc)</h4>
-              <p class="text-xs text-slate-500 leading-relaxed">Perfect for testing the waters. One-off class with zero upfront commitment.</p>
+              <p class="text-xs text-slate-500 leading-relaxed"><span class="font-bold text-brand-600">October Promo!</span> Perfect for testing the waters. One-off class with zero upfront commitment.</p>
             </div>
           </label>
 
@@ -255,6 +259,7 @@
         </div>
         
         <div class="pl-2">
+          <!-- Dynamic label for months -->
           <label class="block text-xs font-bold text-slate-700 uppercase mb-3">Available Weekends (<span id="currentMonthLabel" class="text-brand-600">Loading...</span>)</label>
           <div id="calendarGrid" class="grid grid-cols-2 md:grid-cols-4 gap-3">
             <!-- Cards populated by Javascript -->
@@ -264,7 +269,6 @@
         </div>
       </section>
 
-      <!-- Added mb-24 here so the sticky bar won't overlap inputs when keyboard is open -->
       <section class="bg-white rounded-3xl p-6 shadow-sm border border-brand-100 relative overflow-hidden mb-24">
         <div class="absolute top-0 left-0 w-2 h-full bg-brand-500"></div>
         <div class="flex items-center space-x-3 mb-4 pl-2">
@@ -475,7 +479,7 @@
       const regContainer = document.getElementById('regFeeContainer');
 
       let basePrice = 0;
-      if (packageType === 'Casual Drop-in (Adhoc)') basePrice = 50; 
+      if (packageType === 'Casual Drop-in (Adhoc)') basePrice = 40; // RM 40 PROMO
       else if (packageType === 'Core Court Membership') basePrice = 160;
 
       let registrationFee = 0;
@@ -589,53 +593,55 @@
       document.getElementById('slotError').classList.add('hidden');
     }
 
+    // UPDATED: Now generates exactly the next 8 slots (4 weeks / weekends)
     function generateDynamicWeekends() {
       const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
       const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
       const slots = [];
+      
       const today = new Date();
-      let targetMonth = today.getMonth();
-      let targetYear = today.getFullYear();
+      let iterDate = new Date(today.getFullYear(), today.getMonth(), today.getDate()); 
+      
+      // We want to fetch exactly 4 weekends (8 total slots since we offer Sat + Sun)
+      let maxSlots = 8; 
+      let firstMonth = -1;
+      let lastMonth = -1;
+      let firstYear = -1;
+      let lastYear = -1;
 
-      let hasRemainingWeekends = false;
-      let tempD = new Date(targetYear, targetMonth, today.getDate());
-      while(tempD.getMonth() === targetMonth) {
-          if (tempD.getDay() === 0 || tempD.getDay() === 6) {
-              hasRemainingWeekends = true;
-              break;
-          }
-          tempD.setDate(tempD.getDate() + 1);
-      }
-
-      if (!hasRemainingWeekends) {
-          targetMonth++;
-          if (targetMonth > 11) { targetMonth = 0; targetYear++; }
-      }
-
-      document.getElementById('currentMonthLabel').innerText = `${monthNames[targetMonth]} ${targetYear}`;
-
-      let iterDate = new Date(targetYear, targetMonth, 1);
-      if (targetMonth === today.getMonth() && targetYear === today.getFullYear()) {
-          iterDate = new Date(targetYear, targetMonth, today.getDate()); 
-      }
-
-      while (iterDate.getMonth() === targetMonth) {
+      while (slots.length < maxSlots) {
           const dayOfWeek = iterDate.getDay();
-          if (dayOfWeek === 6) { 
+          
+          if (dayOfWeek === 6 || dayOfWeek === 0) { 
+              if (firstMonth === -1) {
+                  firstMonth = iterDate.getMonth();
+                  firstYear = iterDate.getFullYear();
+              }
+              lastMonth = iterDate.getMonth();
+              lastYear = iterDate.getFullYear();
+
+              const timeStr = dayOfWeek === 6 ? "9:00 AM - 10:00 AM" : "4:00 PM - 5:00 PM";
+              const hourStr = dayOfWeek === 6 ? "9-10am" : "4-5pm";
+
               slots.push({
-                  id: `${dayNames[6]}, ${iterDate.getDate()} ${monthNames[targetMonth]} (9-10am)`,
-                  day: `${dayNames[6]}, ${iterDate.getDate()} ${monthNames[targetMonth]}`,
-                  time: "9:00 AM - 10:00 AM"
-              });
-          } else if (dayOfWeek === 0) { 
-              slots.push({
-                  id: `${dayNames[0]}, ${iterDate.getDate()} ${monthNames[targetMonth]} (4-5pm)`,
-                  day: `${dayNames[0]}, ${iterDate.getDate()} ${monthNames[targetMonth]}`,
-                  time: "4:00 PM - 5:00 PM"
+                  id: `${dayNames[dayOfWeek]}, ${iterDate.getDate()} ${monthNames[iterDate.getMonth()]} (${hourStr})`,
+                  day: `${dayNames[dayOfWeek]}, ${iterDate.getDate()} ${monthNames[iterDate.getMonth()]}`,
+                  time: timeStr
               });
           }
           iterDate.setDate(iterDate.getDate() + 1);
       }
+
+      let labelText = `${monthNames[firstMonth]} ${firstYear}`;
+      if (firstMonth !== lastMonth || firstYear !== lastYear) {
+          if (firstYear === lastYear) {
+              labelText = `${monthNames[firstMonth]} - ${monthNames[lastMonth]} ${firstYear}`;
+          } else {
+              labelText = `${monthNames[firstMonth]} ${firstYear} - ${monthNames[lastMonth]} ${lastYear}`;
+          }
+      }
+      
+      document.getElementById('currentMonthLabel').innerText = labelText;
       return slots;
     }
 
@@ -662,7 +668,7 @@
       grid.innerHTML = ""; 
 
       if (dynamicSlots.length === 0) {
-        grid.innerHTML = `<div class="col-span-full text-center p-4 text-slate-500 text-sm font-medium">No remaining slots this month.</div>`;
+        grid.innerHTML = `<div class="col-span-full text-center p-4 text-slate-500 text-sm font-medium">No remaining slots available.</div>`;
         return;
       }
 
