@@ -52,6 +52,7 @@
       <nav class="hidden md:flex space-x-6 items-center">
         <a href="#about" class="text-sm font-bold text-slate-600 hover:text-brand-600 transition-colors">About Us</a>
         <a href="#gallery" class="text-sm font-bold text-slate-600 hover:text-brand-600 transition-colors">Class Gallery</a>
+        <a href="#" onclick="openTermsModal(event)" class="text-sm font-bold text-slate-600 hover:text-brand-600 transition-colors">Terms & Conditions</a>
         <a href="#bookingForm" class="text-sm font-bold text-slate-600 hover:text-brand-600 transition-colors">Book a Class</a>
       </nav>
 
@@ -60,10 +61,11 @@
       </span>
     </div>
     
-    <div class="md:hidden border-t border-brand-100 bg-brand-50/50 px-2 py-2.5 flex justify-evenly">
-       <a href="#about" class="text-xs font-bold text-slate-700 hover:text-brand-600 flex items-center gap-1"><i data-lucide="info" class="w-3.5 h-3.5"></i> About</a>
-       <a href="#gallery" class="text-xs font-bold text-slate-700 hover:text-brand-600 flex items-center gap-1"><i data-lucide="image" class="w-3.5 h-3.5"></i> Gallery</a>
-       <a href="#bookingForm" class="text-xs font-bold text-slate-700 hover:text-brand-600 flex items-center gap-1"><i data-lucide="calendar-plus" class="w-3.5 h-3.5"></i> Book Now</a>
+    <div class="md:hidden border-t border-brand-100 bg-brand-50/50 px-1 py-2.5 flex justify-evenly">
+       <a href="#about" class="text-[11px] font-bold text-slate-700 hover:text-brand-600 flex items-center gap-1"><i data-lucide="info" class="w-3.5 h-3.5"></i> About</a>
+       <a href="#gallery" class="text-[11px] font-bold text-slate-700 hover:text-brand-600 flex items-center gap-1"><i data-lucide="image" class="w-3.5 h-3.5"></i> Gallery</a>
+       <a href="#" onclick="openTermsModal(event)" class="text-[11px] font-bold text-slate-700 hover:text-brand-600 flex items-center gap-1"><i data-lucide="file-text" class="w-3.5 h-3.5"></i> Terms</a>
+       <a href="#bookingForm" class="text-[11px] font-bold text-slate-700 hover:text-brand-600 flex items-center gap-1"><i data-lucide="calendar-plus" class="w-3.5 h-3.5"></i> Book</a>
     </div>
   </header>
 
@@ -212,7 +214,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <label class="relative border-2 border-slate-200 rounded-xl p-5 cursor-pointer hover:border-brand-500 transition-all has-[:checked]:border-brand-600 has-[:checked]:bg-brand-50/50 flex flex-col justify-between">
-            <input type="radio" name="package" value="Casual Drop-in (Adhoc)" class="sr-only" onchange="updatePricing()">
+            <input type="radio" name="package" value="Casual Drop-in (Adhoc)" class="sr-only" onchange="updatePricing()" required>
             <div>
               <div class="flex justify-between items-start mb-2">
                 <span class="inline-block bg-slate-100 text-slate-700 text-[10px] font-bold px-2 py-1 rounded uppercase">No Commit</span>
@@ -224,7 +226,7 @@
           </label>
 
           <label class="relative border-2 border-slate-200 rounded-xl p-5 cursor-pointer hover:border-brand-500 transition-all has-[:checked]:border-brand-600 has-[:checked]:bg-brand-50/50 flex flex-col justify-between overflow-hidden">
-            <input type="radio" name="package" value="Core Court Membership" class="sr-only" checked onchange="updatePricing()">
+            <input type="radio" name="package" value="Core Court Membership" class="sr-only" onchange="updatePricing()" required>
             <div class="absolute top-0 right-0">
                <span class="inline-block bg-gradient-to-r from-amber-400 to-amber-500 text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg shadow-sm uppercase tracking-wider">Best Value</span>
             </div>
@@ -262,7 +264,8 @@
         </div>
       </section>
 
-      <section class="bg-white rounded-3xl p-6 shadow-sm border border-brand-100 relative overflow-hidden">
+      <!-- Added mb-24 here so the sticky bar won't overlap inputs when keyboard is open -->
+      <section class="bg-white rounded-3xl p-6 shadow-sm border border-brand-100 relative overflow-hidden mb-24">
         <div class="absolute top-0 left-0 w-2 h-full bg-brand-500"></div>
         <div class="flex items-center space-x-3 mb-4 pl-2">
           <div class="w-7 h-7 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center font-bold text-sm">4</div>
@@ -313,6 +316,7 @@
         </div>
       </section>
 
+      <!-- Sticky Payment Bar -->
       <div class="bg-white p-5 rounded-3xl border border-brand-200 shadow-xl flex flex-col md:flex-row items-center justify-between gap-4 sticky bottom-4 z-20">
         <div class="flex items-center gap-4">
           <div class="w-12 h-12 rounded-full bg-brand-50 flex items-center justify-center text-brand-600">
@@ -320,7 +324,7 @@
           </div>
           <div>
             <span class="text-xs font-bold text-slate-500 block uppercase tracking-wider">Total Due</span>
-            <span id="finalTotalDisplay" class="text-3xl font-black text-brand-600 tracking-tight">RM 190.00</span>
+            <span id="finalTotalDisplay" class="text-3xl font-black text-brand-600 tracking-tight">RM 0.00</span>
           </div>
         </div>
         <button type="submit" id="submitBtn" class="w-full md:w-auto bg-gradient-to-r from-brand-600 to-accent-600 hover:from-brand-700 hover:to-accent-700 text-white font-bold px-8 py-4 rounded-2xl shadow-lg shadow-brand-500/30 transition-all transform hover:-translate-y-0.5 flex items-center justify-center space-x-2">
@@ -343,11 +347,65 @@
             <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
           </svg>
         </a>
+
+        <a href="https://tiktok.com/@theroyalcourtacademy" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full bg-brand-50 border border-brand-200 text-brand-600 flex items-center justify-center hover:bg-black hover:text-white hover:border-black transition-all duration-300 shadow-sm hover:shadow-md transform hover:-translate-y-1">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+          </svg>
+        </a>
       </div>
-      <p class="text-xs text-slate-400 font-medium pt-2">© The Royal Court Academy. All rights reserved.</p>
+
+      <div class="text-center pt-2">
+        <p class="text-xs text-slate-400 font-medium">© The Royal Court Academy. All rights reserved.</p>
+        <button onclick="openTermsModal(event)" class="text-[10px] text-slate-400 hover:text-brand-600 underline mt-1">Terms & Conditions</button>
+      </div>
     </div>
   </footer>
 
+  <!-- T&C Modal -->
+  <div id="termsModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full max-h-[85vh] flex flex-col shadow-2xl relative animate-in fade-in zoom-in duration-200 border border-brand-100">
+      
+      <div class="p-6 border-b border-slate-100 flex items-center justify-between sticky top-0 bg-white rounded-t-3xl">
+        <h3 class="text-xl font-black text-slate-900 flex items-center gap-2">
+          <i data-lucide="scale" class="w-5 h-5 text-brand-600"></i> Terms & Conditions
+        </h3>
+        <button onclick="closeTermsModal()" class="text-slate-400 hover:text-brand-600 bg-slate-50 p-2 rounded-full transition-colors">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="p-6 overflow-y-auto text-sm text-slate-600 space-y-5 font-medium leading-relaxed">
+        <p>By registering your child at The Royal Court Academy, you agree to our booking, cancellation, and replacement policies designed to keep our classes running smoothly and effectively for all students.</p>
+        
+        <div class="space-y-2">
+          <h4 class="text-slate-900 font-bold text-base">1. Rescheduling & Last-Minute Changes</h4>
+          <p>We understand that unexpected events occur. If your child cannot attend their scheduled class, parents must notify our coaching staff prior to the class start time to request a date change.</p>
+        </div>
+
+        <div class="space-y-2">
+          <h4 class="text-slate-900 font-bold text-base">2. One-Time Replacement Policy</h4>
+          <p>Each registered booking is strictly entitled to a maximum of <strong>one (1) replacement date</strong> per student. This replacement date must be mutually agreed upon with the RCA coaching staff and is subject to current court and class availability.</p>
+        </div>
+
+        <div class="space-y-2">
+          <h4 class="text-amber-600 font-bold text-base flex items-center gap-1.5"><i data-lucide="flame" class="w-4 h-4"></i> 3. Forfeiture (Burned Slots)</h4>
+          <p>If a student fails to attend their agreed-upon replacement date for any reason, the class slot will be officially considered <strong>"burned" (forfeited)</strong>. We will not offer secondary replacement dates or further rescheduling for burned slots.</p>
+        </div>
+
+        <div class="space-y-2">
+          <h4 class="text-red-600 font-bold text-base">4. No Refunds</h4>
+          <p>All registration and membership payments are final. The Royal Court Academy strictly does not offer monetary refunds for missed classes, partial attendance, unused memberships, or burned replacement slots under any circumstances.</p>
+        </div>
+      </div>
+
+      <div class="p-5 border-t border-slate-100 bg-slate-50 rounded-b-3xl">
+        <button onclick="closeTermsModal()" class="w-full bg-slate-900 hover:bg-black text-white font-bold py-3 rounded-xl transition-all">I Understand & Agree</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Payment Modal -->
   <div id="paymentModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
     <div class="bg-white rounded-3xl max-w-md w-full p-8 shadow-2xl space-y-6 relative animate-in fade-in zoom-in duration-200 border border-brand-100">
       
@@ -369,7 +427,7 @@
         </div>
         <div class="mt-5 text-center bg-white px-6 py-2 rounded-full shadow-sm border border-slate-100">
           <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-0.5">Amount to Transfer</span>
-          <span id="modalAmountDisplay" class="text-2xl font-black text-brand-600">RM 190.00</span>
+          <span id="modalAmountDisplay" class="text-2xl font-black text-brand-600">RM 0.00</span>
         </div>
       </div>
 
@@ -387,16 +445,30 @@
     lucide.createIcons();
 
     // ===================================================================================
-    // INSERT YOUR BRAND NEW GOOGLE SCRIPT WEB APP URL HERE
+    // DO NOT LOSE THIS - This is your working live database link!
     // ===================================================================================
     const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxXTWtl7s9xcppdvW4nAQZfyWJESeHVITNZDUWm1VxiX-4DqjKJMr_8-j5sdIA5Kgpj/exec"; 
     const COACH_WHATSAPP = "601112985037";
 
-    let selectedTotal = 190;
+    let selectedTotal = 0;
+
+    function openTermsModal(e) {
+      if(e) e.preventDefault();
+      document.getElementById('termsModal').classList.remove('hidden');
+    }
+
+    function closeTermsModal() {
+      document.getElementById('termsModal').classList.add('hidden');
+    }
 
     function updatePricing() {
       const packageRadio = document.querySelector('input[name="package"]:checked');
-      if(!packageRadio) return; 
+      if(!packageRadio) {
+        selectedTotal = 0;
+        document.getElementById('finalTotalDisplay').innerText = `RM 0.00`;
+        document.getElementById('modalAmountDisplay').innerText = `RM 0.00`;
+        return; 
+      }
       
       const packageType = packageRadio.value;
       const isNewStudent = document.getElementById('newStudentCheck').checked;
@@ -477,10 +549,18 @@
 
     function handleFormSubmit(event) {
       event.preventDefault();
+      
+      const packageRadio = document.querySelector('input[name="package"]:checked');
+      if (!packageRadio) {
+        alert("Please select a Class Format before proceeding.");
+        return;
+      }
+
       if (!document.getElementById('classSlot').value) {
         document.getElementById('slotError').classList.remove('hidden');
         return; 
       }
+      
       document.getElementById('slotError').classList.add('hidden');
       document.getElementById('paymentModal').classList.remove('hidden');
     }
@@ -571,6 +651,8 @@
         
         if (response.ok) {
           liveData = await response.json();
+        } else {
+          console.warn("Google Sheet responded with an error, using defaults.");
         }
       } catch (e) {
         console.warn("Live fetch blocked. Using defaults.", e.message);
@@ -615,7 +697,6 @@
 
     async function sendToWhatsApp() {
       const btn = document.getElementById('confirmBtn');
-      // Show loading spinner so user knows it is waiting to securely save
       btn.innerHTML = `<i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i><span>Securing Slot...</span>`;
       btn.disabled = true;
 
@@ -642,18 +723,17 @@
       const combinedChildNames = childNamesArr.join(", ");
       const combinedChildAges = childAgesArr.join(", ");
 
-      const formData = new URLSearchParams();
-      formData.append("ParentName", parentName);
-      formData.append("ParentPhone", parentPhone);
-      formData.append("ChildName", combinedChildNames);
-      formData.append("ChildAge", combinedChildAges);
-      formData.append("NumKids", numKids);
-      formData.append("Package", packageType + (isNewStudent && packageType !== 'Casual Drop-in (Adhoc)' ? ' (+Reg Fee)' : ''));
-      formData.append("Slot", classSlot);
-      formData.append("Amount", `RM ${selectedTotal}`);
-
-      // We explicitly WAIT for this fetch to finish before redirecting to WhatsApp
       try {
+        const formData = new URLSearchParams();
+        formData.append("ParentName", parentName);
+        formData.append("ParentPhone", parentPhone);
+        formData.append("ChildName", combinedChildNames);
+        formData.append("ChildAge", combinedChildAges);
+        formData.append("NumKids", numKids);
+        formData.append("Package", packageType + (isNewStudent && packageType !== 'Casual Drop-in (Adhoc)' ? ' (+Reg Fee)' : ''));
+        formData.append("Slot", classSlot);
+        formData.append("Amount", `RM ${selectedTotal}`);
+
         await fetch(GOOGLE_SCRIPT_URL, {
           method: 'POST',
           mode: 'no-cors',
@@ -674,19 +754,19 @@
         `*Total Amount:* RM ${selectedTotal}%0A%0A` +
         `_I have completed the QR payment and wish to confirm my spot._`;
 
-      // Redirect directly in current tab to prevent backgrounding issues on Mobile Devices
-      window.location.href = `https://wa.me/${COACH_WHATSAPP}?text=${message}`;
+      window.open(`https://wa.me/${COACH_WHATSAPP}?text=${message}`, '_blank');
+      
+      closeModal();
+      document.getElementById('bookingForm').reset();
+      updatePricing();
+      
+      btn.innerHTML = `<i data-lucide="message-circle" class="w-5 h-5"></i><span>Submit & Confirm via WhatsApp</span>`;
+      btn.disabled = false;
+      
+      setTimeout(() => {
+        fetchLiveSlots(); 
+      }, 1500);
     }
-
-    // Reset the button if the user clicks the "Back" button on their phone to return to your site
-    window.addEventListener('pageshow', (event) => {
-       if (event.persisted) {
-          const btn = document.getElementById('confirmBtn');
-          btn.innerHTML = `<i data-lucide="message-circle" class="w-5 h-5"></i><span>Submit & Confirm via WhatsApp</span>`;
-          btn.disabled = false;
-          fetchLiveSlots(); // refresh slots upon returning
-       }
-    });
 
     updatePricing();
     fetchLiveSlots();
@@ -726,38 +806,48 @@
         ctx.save();
         ctx.translate(ball.x, ball.y);
         ctx.rotate(ball.rot);
+
         ctx.beginPath();
         ctx.arc(0, 0, ball.size, 0, Math.PI * 2);
         ctx.fillStyle = '#C6F62D'; 
         ctx.fill();
+        
         ctx.lineWidth = ball.size * 0.12;
         ctx.strokeStyle = '#ffffff';
         ctx.stroke();
+
         ctx.beginPath();
         ctx.arc(-ball.size * 0.7, 0, ball.size * 0.6, -Math.PI / 2, Math.PI / 2);
         ctx.stroke();
+
         ctx.beginPath();
         ctx.arc(ball.size * 0.7, 0, ball.size * 0.6, Math.PI / 2, Math.PI * 1.5);
         ctx.stroke();
+
         ctx.restore();
       }
 
       function animate() {
         ctx.clearRect(0, 0, width, height);
+        
         balls.forEach(ball => {
           ball.y += ball.speedY;
           ball.x += ball.speedX;
           ball.rot += ball.rotSpeed;
+
           if (ball.y - ball.size > height) {
             ball.y = -ball.size;
             ball.x = Math.random() * width;
           }
           if (ball.x - ball.size > width) ball.x = -ball.size;
           if (ball.x + ball.size < 0) ball.x = width + ball.size;
+
           drawBall(ball);
         });
+        
         requestAnimationFrame(animate);
       }
+      
       animate();
     };
 
